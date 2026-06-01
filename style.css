@@ -334,35 +334,18 @@ body {
 .orbital-btn {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 1px;
     text-decoration: none;
     position: relative;
-}
-
-.orbital-ring {
-    position: absolute;
-    left: -4px; top: 50%;
-    transform: translateY(-50%);
-    width: 18px; height: 18px;
-    border: 1px solid var(--accent-blue);
-    border-radius: 50%;
-    border-top-color: transparent;
-    animation: spinBeam 2s linear infinite;
 }
 
 .orbital-core {
     width: 10px; height: 10px;
     background: #43e97b; /* Status Green */
-    border-radius: 50%;
+    border-radius: 75%;
     box-shadow: 0 0 12px #43e97b;
 }
 
-.btn-text {
-    color: #fff;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: color 0.3s;
-}
 
 .orbital-btn:hover .btn-text {
     color: var(--accent-cyan);
