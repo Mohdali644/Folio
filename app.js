@@ -55,7 +55,7 @@ magneticElements.forEach((elem) => {
 
 
 // --- 3. Vanilla JS Typewriter Effect ---
-const typeStrings = ["Full Stack Developer", "AI Enthusiast", "MERN Stack Engineer", "Data Analyst"];
+const typeStrings = ["Front-End Developer","Full Stack Developer", "AI Enthusiast", "MERN Stack Engineer",];
 const typeElement = document.getElementById('typewriter');
 let stringIndex = 0;
 let charIndex = 0;
