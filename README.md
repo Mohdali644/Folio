@@ -15,7 +15,7 @@ A high-performance, zero-dependency digital portfolio engineered to demonstrate 
 
 ## 📑 Executive Summary
 
-**PORTFOLIO_CORE_V2.0** is an immersive Single Page Application (SPA) that rejects bloated JavaScript frameworks in favor of a highly optimized **Pure Web Paradigm** (Vanilla HTML5, CSS3, and ES6+ JavaScript)[cite: 4, 5, 6]. By operating strictly at the native DOM layer, this engine achieves maximum framerates, implements hardware-accelerated rendering pipelines, and executes complex physical interactions without third-party library overhead[cite: 5, 6].
+**PORTFOLIO_CORE_V2.0** is an immersive Single Page Application (SPA) that rejects bloated JavaScript frameworks in favor of a highly optimized **Pure Web Paradigm** (Vanilla HTML5, CSS3, and ES6+ JavaScript)[cite: 4, 5, 6]. By operating strictly at the native DOM layer, this engine achieves maximum framerates, implements hardware-accelerated rendering pipelines, and executes complex physical interactions without third-party library overhead.
 
 ---
 
