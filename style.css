@@ -2225,6 +2225,7 @@ body {
     .footer-bio {
         margin: 0 auto 2rem auto;
     }
+    
     .footer-bottom {
         flex-direction: column;
         gap: 2rem;
