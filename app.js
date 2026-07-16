@@ -288,9 +288,3 @@ animateCanvas();
 window.addEventListener('resize', initParticles);
 
 //-------------------------------------------------------------//
-
-
-
-
-
-

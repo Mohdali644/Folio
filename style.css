@@ -2505,3 +2505,18 @@ body {
     0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; } 
     100% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; box-shadow: 0 0 60px 25px rgba(0, 242, 254, 1); } 
 }
+
+
+/* ========================================== */
+/* GLOBAL NEURAL MATRIX BACKGROUND            */
+/* ========================================== */
+#global-network {
+    position: fixed; /* Locks it to the screen */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10; /* Keeps it strictly in the background */
+    pointer-events: none; /* Allows you to click links right through it */
+    background: #030303; /* Deepest black/blue base for the site */
+}
