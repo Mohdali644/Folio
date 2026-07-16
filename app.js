@@ -336,3 +336,33 @@ hoverElements.forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover-active'));
     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover-active'));
 });
+
+
+
+
+/* ========================================== */
+/* GHOST HUD SCROLL ENGINE (BULLETPROOF)      */
+/* ========================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const badge = document.querySelector('.signature-badge');
+    let scrollTimer;
+
+    // Only run the engine if the badge actually exists on the page
+    if (badge) {
+        window.addEventListener('scroll', () => {
+            // 1. User is scrolling: Instantly show the badge
+            badge.classList.add('scroll-active');
+
+            // 2. Clear the self-destruct timer while they are actively moving
+            window.clearTimeout(scrollTimer);
+
+            // 3. User stops scrolling: Start the 1.5-second countdown
+            scrollTimer = setTimeout(() => {
+                badge.classList.remove('scroll-active');
+            }, 1500); 
+        });
+    } else {
+        console.error("Ghost Engine Error: Could not find '.signature-badge' in HTML.");
+    }
+});

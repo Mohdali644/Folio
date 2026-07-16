@@ -2671,10 +2671,104 @@ body {
     transition: opacity 0.4s ease;
 }
 
-.signature-badge:hover .signature-glow-wrap {
-    opacity: 1;
+/* ========================================== */
+/* BULLETPROOF SIGNATURE BADGE (GHOST MODE)   */
+/* ========================================== */
+
+.signature-badge {
+    position: fixed;
+    bottom: 24px;
+    left: 24px; 
+    transform: none !important; 
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    width: max-content; 
+    background: rgba(10, 10, 10, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 100px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    text-decoration: none;
+    z-index: 9900;
+    
+    /* GHOST MODE PHYSICS */
+    opacity: 0; /* Hidden by default */
+    pointer-events: none; /* Prevents the user from clicking it when it is invisible */
+    transition: opacity 0.6s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
 }
 
-.signature-badge:hover .signature-text {
+/* The class JavaScript will inject when scrolling */
+.signature-badge.scroll-active {
+    opacity: 1;
+    pointer-events: auto; /* Makes it clickable again */
+}
+
+/* Hover Physics */
+.signature-badge.scroll-active:hover {
+    transform: translateY(-5px) !important; 
+    background: rgba(15, 15, 15, 0.8);
+    box-shadow: 0 10px 30px -10px rgba(0, 242, 254, 0.3);
+}
+
+
+
+
+
+/* ========================================== */
+/* BULLETPROOF FADE-IN FROM LEFT              */
+/* ========================================== */
+
+.hero-title-pro {
+    font-size: clamp(4rem, 10vw, 8rem) !important;
+    line-height: 1.1 !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin-bottom: 20px;
+    white-space: nowrap !important;
+    user-select: none;
+    
+    /* THE BULLETPROOF MOVEMENT ENGINE */
+    display: block !important;
+    position: relative !important; /* Unlocks physical left/right movement */
+    opacity: 0; 
+    
+    /* Replaced transform with raw physical positioning */
+    animation: unstoppableLeftSlide 1.2s cubic-bezier(0.19, 1, 0.22, 1) 0.3s forwards !important;
+}
+
+/* The Cyan Dot Pop */
+.accent-dot-pro {
     color: #00f2fe;
+    display: inline-block;
+    opacity: 0;
+    animation: dotPopIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.2s forwards; 
+}
+
+/* --- THE NEW KEYFRAMES --- */
+
+/* Forces physical rendering from left to center */
+@keyframes unstoppableLeftSlide {
+    0% {
+        opacity: 0; 
+        left: -100px; /* Starts physically shifted left */
+    }
+    100% {
+        opacity: 1; 
+        left: 0; /* Locks perfectly back to origin */
+    }
+}
+
+/* The dot mechanic */
+@keyframes dotPopIn {
+    0% { 
+        opacity: 0;
+        transform: scale(0) rotate(-45deg); 
+    }
+    100% { 
+        opacity: 1;
+        transform: scale(1) rotate(0deg); 
+    }
 }
