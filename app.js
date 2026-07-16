@@ -28,6 +28,22 @@ hoverLinks.forEach(link => {
     });
 });
 
+/* --- DYNAMIC MOUSE TRACKING GLOW FOR ABOUT CARDS --- */
+const glowCards = document.querySelectorAll('.glow-card');
+
+glowCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        
+        // Calculate mouse position relative to the card
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Update CSS variables for the radial gradient
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+    });
+});
 
 // --- 2. Magnetic Button Effect ---
 const magneticElements = document.querySelectorAll('[data-magnetic]');
@@ -272,3 +288,9 @@ animateCanvas();
 window.addEventListener('resize', initParticles);
 
 //-------------------------------------------------------------//
+
+
+
+
+
+

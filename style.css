@@ -489,18 +489,88 @@ body {
     transform: translateY(-5px) scale(1.1);
 }
 
-/* --- About Section & Float Animation --- */
-.split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+/* --- THE LAYOUT FIX (Two Columns) --- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Exactly 50/50 split */
+    gap: 60px;
+    align-items: center;
+}
 
-/* NEW: Floating Levitation Utility */
-.floating { animation: levitate 6s ease-in-out infinite; }
+/* --- THE LEFT SIDE VISUALS --- */
+.about-visual {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
 
-.abstract-shape {
-    width: 100%; height: 300px;
-    background: linear-gradient(45deg, rgba(0,242,254,0.1), rgba(79,172,254,0.1));
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    animation: morph 8s ease-in-out infinite alternate, levitate 6s ease-in-out infinite;
-    box-shadow: inset 0 0 50px rgba(0, 242, 254, 0.2);
+/* The Abstract Glowing Blob */
+.abstract-glow-shape {
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, transparent 70%);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    animation: morphBlob 8s ease-in-out infinite alternate;
+}
+
+@keyframes morphBlob {
+    0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+    100% { border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%; transform: scale(1.05); }
+}
+
+/* The Floating Badge (Fixed Position) */
+.floating-badge {
+    position: absolute;
+    bottom: -20px; /* Snaps to bottom right */
+    right: -20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    border-radius: 12px;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+.badge-icon {
+    font-size: 1.5rem;
+}
+
+.badge-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.badge-text strong {
+    color: #fff;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.badge-text span {
+    color: #00f2fe;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Mobile Responsiveness (Stacks them on small screens) */
+@media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    .floating-badge {
+        bottom: 20px;
+        right: 20px;
+    }
 }
 
 /* --- Experience Timeline --- */
@@ -2230,4 +2300,211 @@ body {
         flex-direction: column;
         gap: 2rem;
     }
+}
+
+
+/* ========================================== */
+/* PRO ABOUT SECTION ARCHITECTURE             */
+/* ========================================== */
+
+.pro-about-section {
+    padding: 120px 5%; /* Gives breathing room on the sides */
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Bulletproof Container to stop stretching */
+.pro-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* The Lock-Down Grid */
+.pro-about-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr; /* Visual is slightly narrower, text is wider */
+    gap: 60px;
+    align-items: center;
+}
+
+/* --- Left Column Visuals --- */
+.pro-visual-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* This prevents the box from growing indefinitely */
+    max-height: 450px; 
+}
+
+.pro-glow-shape {
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.2) 0%, transparent 60%);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    animation: morphBlob 8s ease-in-out infinite alternate;
+}
+
+.pro-floating-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    border-radius: 12px;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    z-index: 10;
+}
+
+/* --- Right Column Layout --- */
+.pro-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pro-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 30px;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 992px) {
+    .pro-about-grid {
+        grid-template-columns: 1fr; /* Stacks to 1 column on phones/tablets */
+        gap: 40px;
+    }
+    .pro-visual-wrapper {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .pro-floating-badge {
+        bottom: 20px;
+        right: 20px;
+    }
+    .pro-stats-grid {
+        grid-template-columns: 1fr; /* Stats stack on mobile */
+    }
+}
+
+/* --- THE 3D HOLOGRAPHIC DATA CORE --- */
+
+.pro-visual-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: #050505; /* Deep black space */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    perspective: 1000px; /* This unlocks 3D space */
+}
+
+/* Subtly glowing tech grid in the background */
+.pro-visual-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 242, 254, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 242, 254, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+}
+
+/* The Core Container */
+.hologram-core {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    transform-style: preserve-3d;
+    z-index: 1;
+    animation: floatCore 6s ease-in-out infinite;
+}
+
+/* The 3D Rings */
+.ring {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transform-style: preserve-3d;
+}
+
+/* Outer Cyan Ring */
+.ring-1 {
+    border-top: 2px solid #00f2fe;
+    border-bottom: 2px solid #00f2fe;
+    animation: spinX 8s linear infinite;
+    box-shadow: inset 0 0 20px rgba(0, 242, 254, 0.1), 0 0 20px rgba(0, 242, 254, 0.2);
+}
+
+/* Middle Blue Ring */
+.ring-2 {
+    border-left: 2px solid #4facfe;
+    border-right: 2px solid #4facfe;
+    width: 75%; height: 75%;
+    margin: 12.5%;
+    animation: spinY 6s linear infinite reverse;
+    box-shadow: inset 0 0 20px rgba(79, 172, 254, 0.2);
+}
+
+/* Inner Purple AI Ring */
+.ring-3 {
+    border-top: 2px solid #b06ab3;
+    border-bottom: 2px solid #b06ab3;
+    width: 50%; height: 50%;
+    margin: 25%;
+    animation: spinZ 10s linear infinite;
+    box-shadow: 0 0 15px rgba(176, 106, 179, 0.4);
+}
+
+/* The Glowing Brain/Data Center */
+.core-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25px; height: 25px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 40px 15px rgba(0, 242, 254, 0.8);
+    animation: pulseCore 2s ease-in-out infinite alternate;
+}
+
+/* --- THE 3D KEYFRAME ANIMATIONS --- */
+@keyframes spinX { 
+    0% { transform: rotateX(0deg) rotateY(0deg); } 
+    100% { transform: rotateX(360deg) rotateY(360deg); } 
+}
+@keyframes spinY { 
+    0% { transform: rotateY(0deg) rotateZ(0deg); } 
+    100% { transform: rotateY(360deg) rotateZ(360deg); } 
+}
+@keyframes spinZ { 
+    0% { transform: rotateZ(0deg) rotateX(0deg); } 
+    100% { transform: rotateZ(360deg) rotateX(360deg); } 
+}
+@keyframes floatCore { 
+    0%, 100% { transform: translateY(0); } 
+    50% { transform: translateY(-15px); } 
+}
+@keyframes pulseCore { 
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; } 
+    100% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; box-shadow: 0 0 60px 25px rgba(0, 242, 254, 1); } 
 }
