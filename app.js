@@ -288,3 +288,51 @@ animateCanvas();
 window.addEventListener('resize', initParticles);
 
 //-------------------------------------------------------------//
+
+
+
+
+
+
+
+
+
+
+
+/* ========================================== */
+/* HOLOGRAPHIC CURSOR PHYSICS ENGINE          */
+/* ========================================== */
+const cursor = document.querySelector('.holo-cursor');
+const follower = document.querySelector('.holo-cursor-follower');
+
+let mouseX = 0, mouseY = 0;
+let followerX = 0, followerY = 0;
+
+// Track exact mouse position instantly
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    
+    // The tiny precision dot snaps instantly
+    cursor.style.left = `${mouseX}px`;
+    cursor.style.top = `${mouseY}px`;
+});
+
+// Calculate the buttery smooth delay for the follower
+function animateCursor() {
+    followerX += (mouseX - followerX) * 0.15; // 0.15 is the drag speed
+    followerY += (mouseY - followerY) * 0.15;
+    
+    follower.style.left = `${followerX}px`;
+    follower.style.top = `${followerY}px`;
+    
+    requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+// Activate the magnetic purple glow on interactive elements
+const hoverElements = document.querySelectorAll('a, button, .glass-panel, .glow-card');
+hoverElements.forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover-active'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover-active'));
+});
