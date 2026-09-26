@@ -1,0 +1,87 @@
+/* 1. Import the sharp, structured geometric font */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-bg-base: #050505;
+  --color-accent-cyan: #00f2fe;
+  --color-accent-blue: #4facfe;
+  --color-text-muted: #a0a0a0;
+  
+  /* 2. Override default sans font */
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+}
+
+@layer base {
+  * {
+    cursor: none;
+  }
+  
+  body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    @apply bg-bg-base text-white overflow-x-hidden min-h-screen;
+    background: radial-gradient(circle at top left, #0a0a1a, #050505 40%);
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-[20px] border border-white/10 rounded-2xl p-8 shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all duration-300;
+  }
+  
+  .glass-panel:hover {
+    @apply border-accent-cyan/40 shadow-[0_15px_40px_rgba(0,242,254,0.1)] -translate-y-1;
+  }
+}
+
+@keyframes floatCore { 
+  0%, 100% { transform: translateY(0); } 
+  50% { transform: translateY(-15px); } 
+}
+@keyframes floatBadge {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-15px) rotate(2deg); }
+}
+@keyframes gradientFlow { 
+  0% { background-position: 0% 50%; } 
+  50% { background-position: 100% 50%; } 
+  100% { background-position: 0% 50%; } 
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes spinBeam {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@layer utilities {
+  .text-stroke {
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.2);
+    color: transparent;
+  }
+}
+
+@keyframes radarPulse {
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes rapidBlink {
+  0%, 100% { opacity: 1; box-shadow: 0 0 10px #43e97b; }
+  50% { opacity: 0; box-shadow: none; }
+}
+@keyframes scanline {
+  0% { transform: translateY(0vh); }
+  100% { transform: translateY(100vh); }
+}
+@keyframes morph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 70% 70% 30% / 30% 30% 60% 40%; }
+}
+@keyframes sweep {
+  0% { transform: translateX(-150%) skewX(12deg); }
+  100% { transform: translateX(150%) skewX(12deg); }
+}
