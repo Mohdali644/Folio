@@ -1,67 +1,160 @@
-import { motion } from "framer-motion";
-import TiltCard from "./TiltCard";
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+
+const experiences = [
+  {
+    role: "Data Research Analyst",
+    period: "Nov 2024 – Jan 2025",
+    description: [
+      "Conducted research and analyzed large datasets to support data-driven decisions.",
+      "Collected and validated data, ensuring high accuracy and structural reliability.",
+      "Developed interactive visualizations and reports for effective communication of findings.",
+      "Identified emerging trends and provided actionable insights to key stakeholders."
+    ],
+    skills: ["Data Analytics", "Data Visualization", "Research", "Trend Analysis"]
+  },
+  {
+    role: "Full-Stack Developer",
+    period: "2025 – 2026",
+    description: [
+      "Engineered scalable web architectures and dynamic user interfaces utilizing ReactJS, Tailwind CSS, and Node.js.",
+      "Competed as a core developer in the HackPrix Season 3 Hackathon, rapidly prototyping solutions under strict time constraints.",
+      "Maintained version control and continuous integration via advanced GitHub repository management.",
+      "Integrated machine learning models and Python-based backend analytics into seamless front-end dashboards."
+    ],
+    skills: ["React.js", "Node.js", "Python", "Git Architecture"]
+  }
+];
 
 export default function Experience() {
+  const containerRef = useRef(null);
+  
+  // Advanced Scroll Tracking for the Laser Line
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"]
+  });
+
+  const laserHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   return (
-    <section id="experience" className="py-32 w-full relative z-10">
-      <div className="absolute top-[40%] right-[-10%] w-[500px] h-[500px] bg-accent-cyan rounded-full blur-[150px] opacity-10 z-0"></div>
+    <section id="experience" className="py-32 relative z-10 w-full" ref={containerRef}>
       
-      <div className="max-w-4xl mx-auto px-8 relative z-10">
-        <motion.h2 
+      {/* Ambient Glow */}
+      <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-accent-cyan/5 rounded-full blur-[150px] pointer-events-none"></div>
+
+      <div className="max-w-5xl mx-auto px-6 md:px-8">
+        
+        {/* ==========================================
+            SECTION HEADER
+        ========================================== */}
+        <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl font-black text-center mb-16 relative inline-block left-1/2 -translate-x-1/2 after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-1/2 after:h-[3px] after:bg-accent-cyan after:rounded-full hover:after:w-full hover:after:shadow-[0_0_10px_#00f2fe] after:transition-all after:duration-400"
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+          className="flex flex-col items-center mb-24"
         >
-          Professional Journey
-        </motion.h2>
+          <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-black text-white tracking-tighter relative inline-block">
+            Professional Journey
+            {/* Animated Underline */}
+            <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-gradient-to-r from-transparent via-accent-cyan to-transparent opacity-80 blur-[1px]"></span>
+            <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1/3 h-[2px] bg-accent-cyan shadow-[0_0_15px_#00f2fe]"></span>
+          </h2>
+        </motion.div>
 
-        <div className="relative py-8">
-          {/* Glowing Vertical Line */}
-          <div className="absolute top-0 bottom-0 left-[24px] md:left-[24px] w-[2px] bg-gradient-to-b from-transparent via-accent-cyan to-transparent shadow-[0_0_15px_#00f2fe] z-0"></div>
-
-          {/* Timeline Item 1 */}
+        {/* ==========================================
+            THE LASER TIMELINE
+        ========================================== */}
+        <div className="relative">
+          
+          {/* Base Inactive Track */}
+          <div className="absolute left-[15px] sm:left-[23px] top-0 bottom-0 w-[2px] bg-white/10 rounded-full"></div>
+          
+          {/* Active Laser Beam (Grows on Scroll) */}
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            className="relative pl-[80px] mb-16 group"
-          >
-            {/* Glowing Marker Node */}
-            <div className="absolute left-[13px] top-[24px] w-[24px] h-[24px] flex justify-center items-center z-10">
-              <div className="absolute w-full h-full bg-accent-cyan rounded-full z-0 animate-[radarPulse_2s_cubic-bezier(0.215,0.61,0.355,1)_infinite]"></div>
-              <div className="w-[12px] h-[12px] bg-white rounded-full shadow-[0_0_10px_#fff,0_0_20px_#00f2fe] z-10 group-hover:scale-150 group-hover:bg-accent-cyan transition-transform duration-300"></div>
-            </div>
-            
-            <TiltCard className="glass-panel group-hover:border-accent-cyan/40">
-              <div className="flex flex-col md:flex-row justify-between md:items-center mb-6 pb-4 border-b border-white/5 gap-4">
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-accent-cyan to-white bg-clip-text text-transparent">Data Research Analyst</h3>
-                <span className="bg-accent-cyan/10 border border-accent-cyan/20 text-accent-cyan px-4 py-1.5 rounded-full text-sm font-bold flex items-center gap-2 w-max cursor-none">
-                  Nov 2024 - Jan 2025
-                </span>
-              </div>
-              
-              <ul className="flex flex-col gap-4">
-                {[
-                  "Conducted research and analyzed large datasets to support data-driven decisions.",
-                  "Collected and validated data, ensuring high accuracy and structural reliability.",
-                  "Developed interactive visualizations and reports for effective communication of findings.",
-                  "Identified emerging trends and provided actionable insights to key stakeholders."
-                ].map((duty, idx) => (
-                  <li key={idx} className="flex items-start gap-4 text-text-muted hover:text-white transition-colors">
-                    <span className="text-accent-blue text-lg leading-tight drop-shadow-[0_0_10px_rgba(79,172,254,0.5)]">▹</span>
-                    <p className="leading-relaxed">{duty}</p>
-                  </li>
-                ))}
-              </ul>
+            style={{ height: laserHeight }}
+            className="absolute left-[15px] sm:left-[23px] top-0 w-[2px] bg-gradient-to-b from-accent-cyan via-accent-blue to-transparent shadow-[0_0_15px_#00f2fe] rounded-full origin-top"
+          ></motion.div>
 
-              <div className="flex flex-wrap gap-2 mt-8">
-                {["Data Analytics", "Data Visualization", "Research", "Trend Analysis"].map(t => (
-                  <span key={t} className="bg-white/5 border border-white/10 text-white px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide cursor-none">{t}</span>
-                ))}
+          <div className="flex flex-col gap-16">
+            {experiences.map((exp, index) => (
+              <div key={index} className="relative pl-12 sm:pl-20 group">
+                
+                {/* ==========================================
+                    HARDWARE LED TIMELINE NODE
+                ========================================== */}
+                <motion.div 
+                  initial={{ scale: 0, opacity: 0, backgroundColor: "#1a1a24" }}
+                  whileInView={{ scale: 1, opacity: 1, backgroundColor: "#00f2fe" }}
+                  viewport={{ once: false, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="absolute left-0 sm:left-[8px] top-6 w-8 h-8 rounded-full border-4 border-[#030305] flex items-center justify-center z-10 shadow-[0_0_20px_rgba(0,242,254,0.5)] transition-colors duration-500"
+                >
+                  <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                </motion.div>
+
+                {/* ==========================================
+                    GLASSMORPHIC EXPERIENCE CARD
+                ========================================== */}
+                <motion.div 
+                  initial={{ opacity: 0, x: 50, filter: "blur(10px)" }}
+                  whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.1 }}
+                  className="relative p-6 sm:p-8 bg-[#08080c]/80 backdrop-blur-2xl border border-white/5 rounded-2xl sm:rounded-[2rem] overflow-hidden hover:border-accent-cyan/30 transition-all duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.5)] group-hover:shadow-[0_10px_40px_rgba(0,242,254,0.1)]"
+                >
+                  {/* Subtle Grid Background */}
+                  <div className="absolute inset-0 opacity-[0.1] bg-[radial-gradient(#fff_1px,transparent_1px)] bg-[size:10px_10px] [mask-image:radial-gradient(ellipse_at_center,black_10%,transparent_80%)] pointer-events-none"></div>
+
+                  <div className="relative z-10">
+                    
+                    {/* Card Header (Title & Date) */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                      <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-accent-cyan transition-all duration-300">
+                        {exp.role}
+                      </h3>
+                      
+                      <div className="inline-flex items-center justify-center px-4 py-1.5 bg-accent-cyan/10 border border-accent-cyan/20 rounded-full w-fit">
+                        <span className="text-accent-cyan text-xs sm:text-sm font-bold tracking-[0.1em] uppercase">
+                          {exp.period}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Bullet Points */}
+                    <ul className="flex flex-col gap-3 mb-8">
+                      {exp.description.map((desc, i) => (
+                        <li key={i} className="flex items-start text-text-muted text-sm sm:text-base leading-relaxed">
+                          {/* Animated Chevron Bullet */}
+                          <svg className="w-4 h-4 text-accent-cyan/70 mt-1 mr-3 shrink-0 group-hover:text-accent-cyan group-hover:translate-x-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                          </svg>
+                          <span className="group-hover:text-white/90 transition-colors duration-300">
+                            {desc}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Skill Pills */}
+                    <div className="flex flex-wrap gap-2">
+                      {exp.skills.map((skill, i) => (
+                        <span 
+                          key={i} 
+                          className="px-4 py-1.5 bg-white/[0.03] border border-white/10 rounded-full text-xs font-bold text-white/70 tracking-wider hover:bg-white/10 hover:border-accent-cyan/50 hover:text-accent-cyan transition-all duration-300 cursor-none"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+
+                  </div>
+                </motion.div>
+
               </div>
-            </TiltCard>
-          </motion.div>
+            ))}
+          </div>
 
         </div>
       </div>

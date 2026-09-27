@@ -136,7 +136,7 @@ export default function Hero() {
           </a>
 
           {/* Secondary Action */}
-          <a href="/Ali.Resume.pdf" download className="glass-panel !py-4 !px-10 !rounded-full font-bold text-sm tracking-[0.15em] uppercase text-white hover:bg-white/10 hover:border-accent-cyan hover:shadow-[0_0_20px_rgba(0,242,254,0.2)] transition-all duration-300 hover:-translate-y-1 cursor-none">
+          <a href="Ali.Resume.pdf" download className="glass-panel !py-4 !px-10 !rounded-full font-bold text-sm tracking-[0.15em] uppercase text-white hover:bg-white/10 hover:border-accent-cyan hover:shadow-[0_0_20px_rgba(0,242,254,0.2)] transition-all duration-300 hover:-translate-y-1 cursor-none">
             Download Resume
           </a>
         </motion.div>

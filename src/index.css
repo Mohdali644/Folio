@@ -85,3 +85,9 @@
   0% { transform: translateX(-150%) skewX(12deg); }
   100% { transform: translateX(150%) skewX(12deg); }
 }
+@keyframes scan {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}

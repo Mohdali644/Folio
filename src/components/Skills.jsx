@@ -1,142 +1,197 @@
-import { motion } from "framer-motion";
-import TiltCard from "./TiltCard";
+import { useRef } from "react";
+import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
 
-// Reusable progress bar component with Framer Motion scroll triggers
-const SkillBar = ({ name, pct, colorClass, width }) => (
-  <div className="mb-6">
-    <div className="flex justify-between mb-2 font-semibold text-[0.95rem]">
-      <span className="text-white">{name}</span>
-      <span className="text-accent-cyan drop-shadow-[0_0_10px_rgba(0,242,254,0.5)]">{pct}</span>
-    </div>
-    <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden shadow-[inset_0_0_5px_rgba(0,0,0,0.5)] relative">
-      <motion.div
-        initial={{ width: 0 }}
-        whileInView={{ width: width }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.5, ease: [0.175, 0.885, 0.32, 1.275], delay: 0.2 }}
-        className={`h-full rounded-full relative bg-gradient-to-r ${colorClass}`}
-      >
-        {/* Neon Tip */}
-        <div className="absolute right-0 top-0 h-full w-[15px] bg-white shadow-[0_0_15px_#fff,0_0_30px_#00f2fe] rounded-full"></div>
-      </motion.div>
-    </div>
-  </div>
-);
+// Your exact core languages and frameworks
+const skillCategories = [
+  {
+    title: "Frontend Languages",
+    status: "Optimized",
+    icon: "✧",
+    skills: [
+      { name: "HTML5 / CSS3", level: 95 },
+      { name: "JavaScript (ES6+)", level: 90 },
+      { name: "React.js", level: 85 },
+      { name: "Tailwind CSS", level: 90 },
+    ],
+  },
+  {
+    title: "Backend & Core",
+    status: "Active",
+    icon: "⛋",
+    skills: [
+      { name: "Node.js & Express", level: 80 },
+      { name: "Python", level: 85 },
+      { name: "Java", level: 70 },
+      { name: "C", level: 75 },
+    ],
+  },
+  {
+    title: "Data & AI",
+    status: "Learning",
+    icon: "⚲",
+    skills: [
+      { name: "Machine Learning", level: 70 },
+      { name: "Data Analytics", level: 80 },
+      { name: "SQL / Databases", level: 80 },
+      { name: "Data Visualization", level: 85 },
+    ],
+  },
+  {
+    title: "Tools & Architecture",
+    status: "Secure",
+    icon: "⟡",
+    skills: [
+      { name: "Git / GitHub", level: 95 },
+      { name: "Framer Motion", level: 85 },
+      { name: "Postman", level: 85 },
+      { name: "Responsive Design", level: 100 },
+    ],
+  },
+];
 
-export default function Skills() {
+/* ==========================================
+   LIQUID GLASS SPATIAL CARD
+========================================== */
+function SpatialCard({ category, catIndex }) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
   return (
-    <section id="skills" className="py-32 w-full relative z-10">
-      <div className="max-w-6xl mx-auto px-8">
-        
-        <motion.h2 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl font-black text-center mb-16 relative inline-block left-1/2 -translate-x-1/2 after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-1/2 after:h-[3px] after:bg-accent-cyan after:rounded-full hover:after:w-full hover:after:shadow-[0_0_10px_#00f2fe] after:transition-all after:duration-400"
-        >
-          Tech Arsenal
-        </motion.h2>
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 1, delay: catIndex * 0.15, ease: [0.16, 1, 0.3, 1] }}
+      onMouseMove={handleMouseMove}
+      className="relative p-8 sm:p-10 rounded-[2.5rem] group cursor-none overflow-hidden"
+    >
+      {/* ================= BACKGROUND & GLASS PHYSICS ================= */}
+      
+      {/* 1. Base Glass Panel */}
+      <div className="absolute inset-0 bg-[#0a0a0f]/40 backdrop-blur-3xl border border-white/5 rounded-[2.5rem] z-0 transition-all duration-700 group-hover:bg-[#0a0a0f]/60 group-hover:border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)]"></div>
 
-        {/* Extreme Marquee[cite: 3] */}
-        <div className="overflow-hidden whitespace-nowrap relative py-4 mb-20 bg-[linear-gradient(90deg,transparent,rgba(0,242,254,0.05),transparent)] border-y border-accent-cyan/20 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-          <div className="inline-block animate-[scroll_25s_linear_infinite]">
-            {/* Duplicated content for seamless scrolling */}
-            {[...Array(2)].map((_, i) => (
-              <span key={i} className="inline-flex items-center">
-                <span className="text-stroke text-5xl font-black mx-8 tracking-widest hover:text-white hover:-webkit-text-stroke-0 hover:drop-shadow-[0_0_25px_#00f2fe] hover:scale-110 transition-all cursor-none">REACT.JS</span>
-                <span className="text-accent-cyan text-5xl font-black mx-8 tracking-widest drop-shadow-[0_0_20px_rgba(0,242,254,0.5)] cursor-none">NODE.JS</span>
-                <span className="text-stroke text-5xl font-black mx-8 tracking-widest hover:text-white hover:-webkit-text-stroke-0 hover:drop-shadow-[0_0_25px_#00f2fe] hover:scale-110 transition-all cursor-none">PYTHON</span>
-                <span className="text-accent-cyan text-5xl font-black mx-8 tracking-widest drop-shadow-[0_0_20px_rgba(0,242,254,0.5)] cursor-none">MONGODB</span>
-                <span className="text-stroke text-5xl font-black mx-8 tracking-widest hover:text-white hover:-webkit-text-stroke-0 hover:drop-shadow-[0_0_25px_#00f2fe] hover:scale-110 transition-all cursor-none">EXPRESS</span>
-                <span className="text-accent-cyan text-5xl font-black mx-8 tracking-widest drop-shadow-[0_0_20px_rgba(0,242,254,0.5)] cursor-none">POSTGRESQL</span>
-              </span>
-            ))}
+      {/* 2. Magnetic Aurora Orb (Follows Cursor) */}
+      <motion.div
+        className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-[2.5rem]"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              400px circle at ${mouseX}px ${mouseY}px,
+              rgba(0, 242, 254, 0.08),
+              transparent 60%
+            )
+          `,
+        }}
+      />
+
+      {/* 3. Liquid Gradient Mesh (Visible on Hover) */}
+      <div className="absolute -inset-[100%] z-0 opacity-0 group-hover:opacity-20 transition-opacity duration-1000 pointer-events-none mix-blend-screen bg-[radial-gradient(ellipse_at_center,rgba(0,242,254,0.4)_0%,rgba(176,106,179,0.3)_50%,transparent_100%)] blur-[80px] animate-[spin_20s_linear_infinite]"></div>
+      
+      {/* 4. Elegant Top Border Highlight */}
+      <div className="absolute top-0 left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-transparent via-white/20 group-hover:via-accent-cyan/50 to-transparent z-10 transition-colors duration-700"></div>
+
+      {/* ================= CONTENT ================= */}
+      <div className="relative z-10">
+        
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 pb-6 border-b border-white/[0.03]">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] group-hover:border-accent-cyan/30 group-hover:shadow-[inset_0_0_20px_rgba(0,242,254,0.1)] transition-all duration-500">
+              <span className="text-2xl text-white/70 group-hover:text-accent-cyan transition-colors">{category.icon}</span>
+            </div>
+            <h3 className="text-2xl font-medium text-white/90 tracking-wide">{category.title}</h3>
+          </div>
+          <div className="px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/5 flex items-center gap-2 group-hover:bg-accent-cyan/5 transition-colors">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan/70 group-hover:bg-accent-cyan group-hover:shadow-[0_0_10px_#00f2fe] transition-all"></span>
+            <span className="text-xs text-white/50 tracking-widest uppercase">{category.status}</span>
           </div>
         </div>
 
-        {/* Extreme Dashboard Grid[cite: 3] */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          
-          {/* Card 1: Frontend Engine[cite: 3] */}
-          <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <TiltCard className="relative p-[2px] rounded-2xl bg-transparent overflow-hidden group">
-              {/* Spinning Laser Border[cite: 5] */}
-              <div className="absolute inset-[-50%] bg-[conic-gradient(from_0deg,transparent_0%,transparent_30%,#00f2fe_50%,#4facfe_60%,transparent_80%,transparent_100%)] animate-[spinBeam_6s_linear_infinite] opacity-50 group-hover:opacity-100 group-hover:animate-[spinBeam_3s_linear_infinite] transition-opacity"></div>
+        {/* Fiber Optic Loading Bars */}
+        <div className="flex flex-col gap-8">
+          {category.skills.map((skill, skillIndex) => (
+            <div key={skillIndex} className="flex flex-col gap-3 group/skill">
               
-              <div className="relative bg-[#08080c]/95 backdrop-blur-xl rounded-[14px] p-10 h-full z-10 shadow-[inset_0_0_30px_rgba(0,0,0,0.8)]">
-                <div className="flex items-center gap-4 mb-8 pb-4 border-b border-white/5">
-                  <span className="text-3xl drop-shadow-[0_0_10px_rgba(0,242,254,0.6)]">💻</span>
-                  <h3 className="text-2xl text-white tracking-wide uppercase">Frontend Engine</h3>
-                </div>
-                <div>
-                  <SkillBar name="React.js" pct="90%" width="90%" colorClass="from-transparent to-accent-cyan" />
-                  <SkillBar name="JavaScript (ES6+)" pct="85%" width="85%" colorClass="from-transparent to-accent-blue" />
-                  <SkillBar name="HTML5 / CSS3" pct="95%" width="95%" colorClass="from-transparent to-accent-cyan" />
-                </div>
+              {/* Text & Percentage */}
+              <div className="flex justify-between items-end">
+                <span className="text-base text-white/70 tracking-wide group-hover/skill:text-white transition-colors duration-300">
+                  {skill.name}
+                </span>
+                <span className="text-sm font-light text-white/40 group-hover/skill:text-accent-cyan transition-colors duration-300">
+                  {skill.level}%
+                </span>
               </div>
-            </TiltCard>
-          </motion.div>
-
-          {/* Card 2: Backend Core[cite: 3] */}
-          <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-            <TiltCard className="relative p-[2px] rounded-2xl bg-transparent overflow-hidden group">
-              <div className="absolute inset-[-50%] bg-[conic-gradient(from_0deg,transparent_0%,transparent_30%,#00f2fe_50%,#4facfe_60%,transparent_80%,transparent_100%)] animate-[spinBeam_6s_linear_infinite] opacity-50 group-hover:opacity-100 group-hover:animate-[spinBeam_3s_linear_infinite] transition-opacity"></div>
-              <div className="relative bg-[#08080c]/95 backdrop-blur-xl rounded-[14px] p-10 h-full z-10 shadow-[inset_0_0_30px_rgba(0,0,0,0.8)]">
-                <div className="flex items-center gap-4 mb-8 pb-4 border-b border-white/5">
-                  <span className="text-3xl drop-shadow-[0_0_10px_rgba(0,242,254,0.6)]">⚙️</span>
-                  <h3 className="text-2xl text-white tracking-wide uppercase">Backend Core</h3>
-                </div>
-                <div>
-                  <SkillBar name="Node.js" pct="85%" width="85%" colorClass="from-transparent to-accent-blue" />
-                  <SkillBar name="Express.js" pct="80%" width="80%" colorClass="from-transparent to-accent-cyan" />
-                  <SkillBar name="Python" pct="75%" width="75%" colorClass="from-transparent to-accent-blue" />
-                  <SkillBar name="C Programming" pct="70%" width="70%" colorClass="from-transparent to-accent-cyan" />
-                </div>
+              
+              {/* Liquid Progress Bar */}
+              <div className="relative w-full h-1.5 bg-white/[0.03] rounded-full overflow-hidden shadow-[inset_0_1px_3px_rgba(0,0,0,0.5)]">
+                {/* Scroll-Triggered Animation happens right here */}
+                <motion.div 
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${skill.level}%` }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 1.5, delay: 0.2 + (skillIndex * 0.15), ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute top-0 left-0 h-full bg-gradient-to-r from-transparent via-accent-cyan/50 to-accent-cyan rounded-full"
+                >
+                  {/* Glowing Core at the tip */}
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-full bg-white blur-[2px] rounded-full group-hover/skill:shadow-[0_0_15px_#00f2fe] transition-shadow duration-300"></div>
+                </motion.div>
               </div>
-            </TiltCard>
-          </motion.div>
 
-          {/* Card 3: Data Matrix[cite: 3] */}
-          <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <TiltCard className="relative p-[2px] rounded-2xl bg-transparent overflow-hidden group">
-              <div className="absolute inset-[-50%] bg-[conic-gradient(from_0deg,transparent_0%,transparent_30%,#00f2fe_50%,#4facfe_60%,transparent_80%,transparent_100%)] animate-[spinBeam_6s_linear_infinite] opacity-50 group-hover:opacity-100 group-hover:animate-[spinBeam_3s_linear_infinite] transition-opacity"></div>
-              <div className="relative bg-[#08080c]/95 backdrop-blur-xl rounded-[14px] p-10 h-full z-10 shadow-[inset_0_0_30px_rgba(0,0,0,0.8)] flex flex-col justify-center">
-                <div className="flex items-center gap-4 mb-8 pb-4 border-b border-white/5 w-full">
-                  <span className="text-3xl drop-shadow-[0_0_10px_rgba(0,242,254,0.6)]">🗄️</span>
-                  <h3 className="text-2xl text-white tracking-wide uppercase">Data Matrix</h3>
-                </div>
-                <div className="flex flex-wrap gap-4">
-                  {['MongoDB', 'PostgreSQL', 'Data Analytics'].map(tech => (
-                    <span key={tech} className="bg-transparent text-text-muted border border-white/20 px-5 py-2 rounded-md text-sm font-semibold tracking-wide uppercase hover:bg-accent-cyan hover:text-black hover:border-accent-cyan hover:shadow-[0_0_20px_rgba(0,242,254,0.5)] hover:scale-105 transition-all cursor-none">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </TiltCard>
-          </motion.div>
-
-          {/* Card 4: Workflow Tools[cite: 3] */}
-          <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-            <TiltCard className="relative p-[2px] rounded-2xl bg-transparent overflow-hidden group">
-              <div className="absolute inset-[-50%] bg-[conic-gradient(from_0deg,transparent_0%,transparent_30%,#00f2fe_50%,#4facfe_60%,transparent_80%,transparent_100%)] animate-[spinBeam_6s_linear_infinite] opacity-50 group-hover:opacity-100 group-hover:animate-[spinBeam_3s_linear_infinite] transition-opacity"></div>
-              <div className="relative bg-[#08080c]/95 backdrop-blur-xl rounded-[14px] p-10 h-full z-10 shadow-[inset_0_0_30px_rgba(0,0,0,0.8)] flex flex-col justify-center">
-                <div className="flex items-center gap-4 mb-8 pb-4 border-b border-white/5 w-full">
-                  <span className="text-3xl drop-shadow-[0_0_10px_rgba(0,242,254,0.6)]">🔧</span>
-                  <h3 className="text-2xl text-white tracking-wide uppercase">Workflow Tools</h3>
-                </div>
-                <div className="flex flex-wrap gap-4">
-                  {['Git / GitHub', 'POSTMAN', 'JWTAuth', 'Recoil'].map(tech => (
-                    <span key={tech} className="bg-transparent text-text-muted border border-white/20 px-5 py-2 rounded-md text-sm font-semibold tracking-wide uppercase hover:bg-accent-cyan hover:text-black hover:border-accent-cyan hover:shadow-[0_0_20px_rgba(0,242,254,0.5)] hover:scale-105 transition-all cursor-none">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </TiltCard>
-          </motion.div>
-
+            </div>
+          ))}
         </div>
+
+      </div>
+    </motion.div>
+  );
+}
+
+/* ==========================================
+   MAIN SECTION
+========================================== */
+export default function Skills() {
+  return (
+    <section id="skills" className="py-32 relative z-10 w-full overflow-hidden">
+      
+      {/* Minimal Ambient Orbs */}
+      <div className="absolute top-[20%] left-[10%] w-[600px] h-[600px] bg-accent-cyan/5 rounded-full blur-[200px] pointer-events-none"></div>
+      <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-accent-blue/5 rounded-full blur-[150px] pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
+        
+        {/* Section Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col mb-24 items-center text-center"
+        >
+          <span className="text-accent-cyan text-sm font-medium tracking-[0.3em] uppercase mb-4 opacity-80">
+            Technical Architecture
+          </span>
+          <h2 className="text-[clamp(3rem,6vw,5rem)] font-light text-white leading-none tracking-tight">
+            Core <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-accent-cyan to-white bg-[length:200%_auto] animate-[gradient_4s_linear_infinite]">Arsenal</span>
+          </h2>
+        </motion.div>
+
+        {/* Spatial Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+          {skillCategories.map((category, index) => (
+            <SpatialCard 
+              key={index} 
+              category={category} 
+              catIndex={index} 
+            />
+          ))}
+        </div>
+
       </div>
     </section>
   );
