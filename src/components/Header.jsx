@@ -1,6 +1,120 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, useMotionTemplate } from 'framer-motion';
 
+/* ==========================================
+   ELITE MAGNETIC 3D LOGO COMPONENT
+========================================== */
+function MagneticLogo() {
+  // Core Physics Trackers
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  // Spring physics for buttery smooth movement
+  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 20 });
+  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 20 });
+
+  // 3D Tilt calculation
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
+
+  // Magnetic Pull calculation (moves the whole button)
+  const pullX = useTransform(mouseXSpring, [-0.5, 0.5], [-12, 12]);
+  const pullY = useTransform(mouseYSpring, [-0.5, 0.5], [-12, 12]);
+
+  // Dynamic Glare calculation (moves reflection across the glass)
+  const glareX = useTransform(mouseXSpring, [-0.5, 0.5], [10, 90]);
+  const glareY = useTransform(mouseYSpring, [-0.5, 0.5], [10, 90]);
+
+  function handleMouseMove(e) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseXPos = e.clientX - rect.left;
+    const mouseYPos = e.clientY - rect.top;
+    
+    // Normalize coordinates between -0.5 and 0.5
+    x.set(mouseXPos / width - 0.5);
+    y.set(mouseYPos / height - 0.5);
+  }
+
+  function handleMouseLeave() {
+    x.set(0);
+    y.set(0);
+  }
+
+  return (
+    <motion.a
+      href="#home"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        x: pullX,
+        y: pullY,
+        transformStyle: "preserve-3d",
+        perspective: 1000
+      }}
+      className="relative group flex items-center justify-center flex-shrink-0 z-50 cursor-none"
+    >
+      {/* 1. Ambient Holographic Cast Shadow */}
+      <div className="absolute inset-0 bg-gradient-to-r from-accent-cyan via-accent-blue to-[#b06ab3] blur-[25px] opacity-0 group-hover:opacity-40 transition-opacity duration-500 rounded-full"></div>
+
+      {/* 2. Physical Glass Chassis */}
+      <div 
+        className="relative flex items-center justify-center px-7 py-3 rounded-full bg-white/[0.01] backdrop-blur-3xl border border-white/5 overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.6)] group-hover:bg-white/[0.03] group-hover:border-white/20 transition-colors duration-500"
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        {/* Spinning Conic Aura inside the glass */}
+        <div className="absolute -inset-[200%] z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-[conic-gradient(from_0deg,transparent_0%,rgba(0,242,254,0.2)_25%,transparent_50%,rgba(176,106,179,0.15)_75%,transparent_100%)] animate-[spin_6s_linear_infinite]"></div>
+        
+        {/* Dark Depth Mask */}
+        <div className="absolute inset-[1px] bg-[#0a0a0f]/80 rounded-full z-0 backdrop-blur-xl"></div>
+
+        {/* Dynamic Glass Glare (Tracks Cursor) */}
+        <motion.div 
+          className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 mix-blend-overlay pointer-events-none rounded-full transition-opacity duration-500"
+          style={{
+            background: useMotionTemplate`radial-gradient(120px circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.4), transparent 80%)`
+          }}
+        />
+
+        {/* Top Edge Premium Highlight */}
+        <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-white/40 group-hover:via-accent-cyan to-transparent z-10 transition-colors duration-500"></div>
+
+        {/* 3. 3D Floating Typography */}
+        <div 
+          className="relative z-20 flex items-baseline font-black tracking-tighter"
+          style={{ transform: "translateZ(40px)" }} // Physically lifts the text off the glass
+        >
+          <span className="text-3xl sm:text-4xl text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] font-sans">
+            M
+          </span>
+          <span className="text-3xl sm:text-4xl text-transparent bg-clip-text bg-gradient-to-br from-white/90 to-white/30 font-sans">
+            A
+          </span>
+          <motion.span 
+            className="text-accent-cyan text-4xl sm:text-5xl leading-none -ml-0.5"
+            animate={{ 
+              textShadow: [
+                "0px 0px 5px rgba(0,242,254,0.3)", 
+                "0px 0px 20px rgba(0,242,254,0.9)", 
+                "0px 0px 5px rgba(0,242,254,0.3)"
+              ] 
+            }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            .
+          </motion.span>
+        </div>
+      </div>
+    </motion.a>
+  );
+}
+
+/* ==========================================
+   MAIN HEADER COMPONENT
+========================================== */
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [hoveredTab, setHoveredTab] = useState(null);
@@ -35,32 +149,9 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 md:px-8 flex items-center justify-between pointer-events-auto">
         
         {/* ==========================================
-            INDESTRUCTIBLE HARDWARE LOGO
+            ELITE 3D MAGNETIC LOGO
         ========================================== */}
-        <a href="#home" className="relative group cursor-none flex items-center justify-center flex-shrink-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-accent-cyan to-accent-blue blur-2xl rounded-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-700"></div>
-          
-          <div className="relative flex-shrink-0 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-[#08080c] border border-white/10 rounded-2xl overflow-hidden shadow-[5px_5px_20px_rgba(0,0,0,0.9),inset_1px_1px_2px_rgba(255,255,255,0.05)] group-hover:border-accent-cyan/40 transition-all duration-500 transform group-hover:scale-105 active:scale-95">
-            
-            <div className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,transparent_0%,transparent_60%,#00f2fe_100%)] opacity-0 group-hover:opacity-100 animate-[spin_2.5s_linear_infinite] z-0"></div>
-            
-            <div className="absolute inset-[1.5px] bg-[#050505] rounded-[14px] z-10 transition-colors duration-500 group-hover:bg-black"></div>
-            
-            <div className="absolute inset-0 opacity-[0.15] bg-[radial-gradient(#fff_1px,transparent_1px)] bg-[size:4px_4px] z-10 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_100%)]"></div>
-
-            <div className="relative z-20 flex items-baseline justify-center gap-1 sm:gap-1.5 ml-1 whitespace-nowrap">
-              <span className="text-[1.4rem] sm:text-[1.6rem] font-black text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-b group-hover:from-white group-hover:to-accent-cyan transition-all duration-500">
-                M
-              </span>
-              <span className="text-[1.4rem] sm:text-[1.6rem] font-black text-white/80 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-b group-hover:from-accent-cyan group-hover:to-accent-blue transition-all duration-500">
-                A
-              </span>
-              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-accent-cyan rounded-full mb-1 sm:mb-1.5 shadow-[0_0_12px_#00f2fe] group-hover:animate-pulse group-hover:bg-[#43e97b] group-hover:shadow-[0_0_20px_#43e97b] transition-all duration-300"></span>
-            </div>
-
-            <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/10 to-transparent z-20 pointer-events-none"></div>
-          </div>
-        </a>
+        <MagneticLogo />
 
         {/* ==========================================
             LIQUID NAVIGATION
