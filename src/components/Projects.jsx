@@ -166,7 +166,7 @@ function ProjectCard({ project, index }) {
                 <span className="text-white font-bold text-sm tracking-[0.15em] uppercase z-10 group-hover/btn:text-accent-cyan transition-colors duration-300">
                   View Live
                 </span>
-                <span className="relative w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover/btn:border-accent-cyan group-hover/btn:bg-accent-cyan/10 transition-all duration-300">
+                <span className="relative mr-11 w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover/btn:border-accent-cyan group-hover/btn:bg-accent-cyan/10 transition-all duration-300">
                   <svg className="w-3 h-3 text-white group-hover/btn:text-accent-cyan group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>

@@ -49,7 +49,7 @@ const skillCategories = [
 ];
 
 /* ==========================================
-   LIQUID GLASS SPATIAL CARD
+   LIQUID GLASS SPATIAL CARD (GPU Optimized)
 ========================================== */
 function SpatialCard({ category, catIndex }) {
   const mouseX = useMotionValue(0);
@@ -68,16 +68,18 @@ function SpatialCard({ category, catIndex }) {
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 1, delay: catIndex * 0.15, ease: [0.16, 1, 0.3, 1] }}
       onMouseMove={handleMouseMove}
-      className="relative p-8 sm:p-10 rounded-[2.5rem] group cursor-none overflow-hidden"
+      // Added transform-gpu so the entrance animation doesn't cause scroll jank
+      className="relative p-8 sm:p-10 rounded-[2.5rem] group cursor-none overflow-hidden transform-gpu"
     >
       {/* ================= BACKGROUND & GLASS PHYSICS ================= */}
       
       {/* 1. Base Glass Panel */}
-      <div className="absolute inset-0 bg-[#0a0a0f]/40 backdrop-blur-3xl border border-white/5 rounded-[2.5rem] z-0 transition-all duration-700 group-hover:bg-[#0a0a0f]/60 group-hover:border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)]"></div>
+      <div className="absolute inset-0 bg-[#0a0a0f]/40 backdrop-blur-3xl border border-white/5 rounded-[2.5rem] z-0 transition-all duration-700 group-hover:bg-[#0a0a0f]/60 group-hover:border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] transform-gpu"></div>
 
       {/* 2. Magnetic Aurora Orb (Follows Cursor) */}
       <motion.div
-        className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-[2.5rem]"
+        // Added will-change-transform for buttery smooth cursor tracking
+        className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-[2.5rem] transform-gpu will-change-transform"
         style={{
           background: useMotionTemplate`
             radial-gradient(
@@ -90,7 +92,8 @@ function SpatialCard({ category, catIndex }) {
       />
 
       {/* 3. Liquid Gradient Mesh (Visible on Hover) */}
-      <div className="absolute -inset-full z-0 opacity-0 group-hover:opacity-20 transition-opacity duration-1000 pointer-events-none mix-blend-screen bg-[radial-gradient(ellipse_at_center,rgba(0,242,254,0.4)_0%,rgba(176,106,179,0.3)_50%,transparent_100%)] blur-[80px] animate-[spin_20s_linear_infinite]"></div>
+      {/* Added transform-gpu and will-change-transform to offload the spin animation to the graphics card */}
+      <div className="absolute -inset-full z-0 opacity-0 group-hover:opacity-20 transition-opacity duration-1000 pointer-events-none mix-blend-screen bg-[radial-gradient(ellipse_at_center,rgba(0,242,254,0.4)_0%,rgba(176,106,179,0.3)_50%,transparent_100%)] blur-[80px] animate-[spin_20s_linear_infinite] transform-gpu will-change-transform"></div>
       
       {/* 4. Elegant Top Border Highlight */}
       <div className="absolute top-0 left-[10%] right-[10%] h-px bg-linear-to-r from-transparent via-white/20 group-hover:via-accent-cyan/50 to-transparent z-10 transition-colors duration-700"></div>
@@ -128,17 +131,16 @@ function SpatialCard({ category, catIndex }) {
               </div>
               
               {/* Liquid Progress Bar */}
-              <div className="relative w-full h-1.5 bg-white/3 rounded-full overflow-hidden shadow-[inset_0_1px_3px_rgba(0,0,0,0.5)]">
-                {/* Scroll-Triggered Animation happens right here */}
+              <div className="relative w-full h-1.5 bg-white/3 rounded-full overflow-hidden shadow-[inset_0_1px_3px_rgba(0,0,0,0.5)] transform-gpu">
                 <motion.div 
                   initial={{ width: 0 }}
                   whileInView={{ width: `${skill.level}%` }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 1.5, delay: 0.2 + (skillIndex * 0.15), ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute top-0 left-0 h-full bg-linear-to-r from-transparent via-accent-cyan/50 to-accent-cyan rounded-full"
+                  className="absolute top-0 left-0 h-full bg-linear-to-r from-transparent via-accent-cyan/50 to-accent-cyan rounded-full transform-gpu"
                 >
                   {/* Glowing Core at the tip */}
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-full bg-white blur-[2px] rounded-full group-hover/skill:shadow-[0_0_15px_#00f2fe] transition-shadow duration-300"></div>
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-full bg-white blur-[2px] rounded-full group-hover/skill:shadow-[0_0_15px_#00f2fe] transition-shadow duration-300 transform-gpu"></div>
                 </motion.div>
               </div>
 
@@ -158,9 +160,9 @@ export default function Skills() {
   return (
     <section id="skills" className="py-32 relative z-10 w-full overflow-hidden">
       
-      {/* Minimal Ambient Orbs */}
-      <div className="absolute top-[20%] left-[10%] w-150 h-150 bg-accent-cyan/5 rounded-full blur-[200px] pointer-events-none"></div>
-      <div className="absolute bottom-[10%] right-[10%] w-125 h-125 bg-accent-blue/5 rounded-full blur-[150px] pointer-events-none"></div>
+      {/* Minimal Ambient Orbs (Now GPU Accelerated) */}
+      <div className="absolute top-[20%] left-[10%] w-150 h-150 bg-accent-cyan/5 rounded-full blur-[200px] pointer-events-none transform-gpu will-change-transform z-0"></div>
+      <div className="absolute bottom-[10%] right-[10%] w-125 h-125 bg-accent-blue/5 rounded-full blur-[150px] pointer-events-none transform-gpu will-change-transform z-0"></div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
@@ -170,7 +172,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col mb-24 items-center text-center"
+          className="flex flex-col mb-24 items-center text-center transform-gpu"
         >
           <span className="text-accent-cyan text-sm font-medium tracking-[0.3em] uppercase mb-4 opacity-80">
             Technical Architecture
