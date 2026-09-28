@@ -8,39 +8,32 @@ const projects = [
   {
     title: "Everbuy",
     category: "E-Commerce Platform",
-    description: "EverBuy is a next-level e-commerce storefront engineered with React 18 and Tailwind CSS. It features a fluid, ultra-responsive UI driven by a sophisticated Context API state architecture. Highlights include dynamic URL routing, a glassmorphic secure checkout, and immersive physics-based 3D-tilt product interactions",
+    description: "A high-performance, modern e-commerce storefront engineered for seamless user experiences, rapid cart interactions, and highly responsive layouts.",
     tech: ["React.js", "Tailwind CSS", "UI/UX"],
     link: "https://ever-buy-neon.vercel.app/",
     github: "https://github.com/Mohdali644/EverBuy",
-    // Beautiful placeholder gradient if you don't have an image yet
-    imageGradient: "from-[#00f2fe]/20 to-[#4facfe]/20" 
+    image: "/everbuy.png", // CHANGE THIS TO YOUR EXACT FILE NAME
+    imageGradient: "from-[#00f2fe] to-[#4facfe]" // Cyan glow overlay
   },
   {
     title: "Whiskerverse",
     category: "Interactive Web Application",
-    description: "A modern animated website that shares random cat facts and includes a fun interactive quiz. Built with HTML, CSS, and JavaScript, featuring API integration, responsive design, and smooth animations.",
-    tech: ["TypeScript", "ES6+ JavaScript", "CSS3","UI/UX"],
+    description: "An immersive, highly responsive digital ecosystem featuring fluid UI/UX principles. Built to handle complex state management while maintaining a pixel-perfect front-end.",
+    tech: ["TypeScript", "Tailwind CSS", "ES6+ JavaScript", "UI/UX"],
     link: "https://mohdali644.github.io/Whisker-verse/",
-    github: "#",
-    imageGradient: "from-[#ff9a9e]/20 to-[#fecfef]/20" // Premium soft pink/purple glow
+    github: "https://github.com/Mohdali644/Whisker-verse",
+    image: "/whiskerverse.png", // CHANGE THIS TO YOUR EXACT FILE NAME
+    imageGradient: "from-[#ff9a9e] to-[#fecfef]" // Soft pink glow overlay
   },
   {
     title: "HackPrix Analytics",
     category: "AI & Data Dashboard",
-    description: "A real-time data visualization matrix integrating machine learning models and Python-based backends for competitive hackathon environments.",
-    tech: ["Python", "Flask", "React.js", "Data Analytics"],
+    description: "A real-time data visualization matrix integrating machine learning models and Python-based backends, built during the HackPrix Season 3 hackathon.",
+    tech: ["Python", "Machine Learning", "React.js", "Data Analytics"],
     link: "#",
     github: "#",
-    imageGradient: "from-[#b06ab3]/20 to-[#4568dc]/20"
-  },
-  {
-    title: "Spatial Portfolio",
-    category: "Awwwards Architecture",
-    description: "The exact platform you are viewing. A masterclass in hardware-accelerated DOM manipulation, spatial UI design, and liquid glassmorphism.",
-    tech: ["React.js", "Tailwind CSS", "Framer Motion", "Vite"],
-    link: "#",
-    github: "#",
-    imageGradient: "from-[#43e97b]/20 to-[#38f9d7]/20"
+    image: "/hackprix.jpg", // CHANGE THIS TO YOUR EXACT FILE NAME
+    imageGradient: "from-[#b06ab3] to-[#4568dc]" // Purple/Blue glow overlay
   }
 ];
 
@@ -107,25 +100,35 @@ function ProjectCard({ project, index }) {
         {/* Layout Grid inside Card */}
         <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[400px] sm:min-h-[500px]">
           
-          {/* LEFT SIDE: Image / Visuals */}
-          <div className="relative p-4 sm:p-6 overflow-hidden rounded-t-[2rem] lg:rounded-l-[3rem] lg:rounded-tr-none h-64 lg:h-auto">
+          {/* ==========================================
+              LEFT SIDE: THE IMAGE VISUALS
+          ========================================== */}
+          <div className="relative p-4 sm:p-6 overflow-hidden rounded-t-[2rem] lg:rounded-l-[3rem] lg:rounded-tr-none h-64 lg:h-full lg:min-h-[400px]">
+            
             {/* Visual Container (Pushed back slightly in 3D) */}
             <div 
-              className="absolute inset-4 sm:inset-6 rounded-2xl sm:rounded-3xl overflow-hidden bg-[#050505] border border-white/5 shadow-inner transform-gpu"
+              className="absolute inset-4 sm:inset-6 rounded-2xl sm:rounded-3xl overflow-hidden bg-[#050505] border border-white/10 shadow-[inset_0_0_20px_rgba(0,0,0,0.8)] transform-gpu"
               style={{ transform: "translateZ(-20px)" }}
             >
-              {/* Dynamic Abstract Gradient representing the project image */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${project.imageGradient} opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 ease-out`}></div>
-              
-              {/* Optional: Add an actual image tag here later!
-                  <img src={project.imageUrl} className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700" />
-              */}
+              {/* THE ACTUAL PROJECT SCREENSHOT */}
+              <img 
+                src={project.image} 
+                alt={project.title}
+                // CHANGED: object-contain prevents cropping, and p-6 creates an elegant floating border
+                className="w-full h-full object-contain object-center p-6 sm:p-8 opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 ease-out"
+              />
 
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#050505_100%)] opacity-80"></div>
-            </div>
+              {/* Cinematic Color Overlay */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${project.imageGradient} mix-blend-overlay opacity-40 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none`}></div>
+              
+              {/* Edge Vignette */}
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#050505_100%)] pointer-events-none"></div>
+              </div>
           </div>
 
-          {/* RIGHT SIDE: Content (Floats forward in 3D) */}
+          {/* ==========================================
+              RIGHT SIDE: THE CONTENT
+          ========================================== */}
           <div 
             className="relative p-8 sm:p-12 lg:p-16 flex flex-col justify-center"
             style={{ transform: "translateZ(60px)", transformStyle: "preserve-3d" }}

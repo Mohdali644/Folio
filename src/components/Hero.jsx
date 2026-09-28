@@ -7,7 +7,6 @@ export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const roles = ["Front-End Developer", "Full-Stack Developer", "Creative Engineer"];
 
-  // Premium Subtle Particle Engine
   const options = useMemo(() => ({
     fullScreen: { enable: false, zIndex: 0 },
     background: { color: { value: "transparent" } },
@@ -41,26 +40,18 @@ export default function Hero() {
   }, [roles.length]);
 
   return (
-    // overflow-x-clip prevents side-scrolling, overflow-y-visible lets the glow bleed down!
     <section id="home" className="relative min-h-screen w-full flex items-center justify-center text-center overflow-x-clip overflow-y-visible">
       
-      {/* ==========================================
-          PREMIUM BACKGROUND: Aurora Mesh & Particles (GPU Optimized)
-      ========================================== */}
-      {/* The solid bg-[#030305] block has been completely deleted from here */}
-      
+      {/* GPU Optimized Ambient Orbs */}
       <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-accent-cyan rounded-full blur-[100px] opacity-30 mix-blend-screen animate-[pulseOrb_8s_ease-in-out_infinite_alternate] transform-gpu will-change-transform z-0"></div>
       <div className="absolute bottom-[-20%] right-[-10%] w-[40vw] h-[40vw] bg-accent-blue rounded-full blur-[100px] opacity-30 mix-blend-screen animate-[pulseOrb_10s_ease-in-out_infinite_alternate-reverse] transform-gpu will-change-transform z-0"></div>
       <div className="absolute top-[40%] left-[40%] w-[30vw] h-[30vw] bg-[#b06ab3] rounded-full blur-[90px] opacity-20 mix-blend-screen animate-[spin_15s_linear_infinite] transform-gpu will-change-transform z-0"></div>
 
       <div id="hero-particles" className="absolute inset-0 z-0 mix-blend-screen [mask-image:radial-gradient(ellipse_at_center,black,transparent)] pointer-events-none"></div>
 
-      {/* ==========================================
-          MAIN CONTENT SEQUENCE
-      ========================================== */}
       <div className="relative z-10 flex flex-col items-center pointer-events-none mt-10 w-full px-6">
         
-        {/* Monumental Typography */}
+        {/* Typography */}
         <div className="relative mt-24 mb-2 sm:mb-4 w-full overflow-hidden flex justify-center py-2">
           <h1 className="text-[clamp(4.5rem,15vw,12rem)] font-black leading-[0.85] tracking-tighter text-white drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex gap-4 sm:gap-6">
             <motion.span
@@ -83,7 +74,7 @@ export default function Hero() {
           </h1>
         </div>
 
-        {/* Changing Text Engine */}
+        {/* Changing Text */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -107,7 +98,7 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Minimalist Subtitle */}
+        {/* Subtitle */}
         <motion.p 
           initial={{ opacity: 0, filter: "blur(5px)" }}
           animate={{ opacity: 1, filter: "blur(0px)" }}
@@ -117,12 +108,12 @@ export default function Hero() {
           B.E. Information Technology | Engineering scalable architectures and pixel-perfect interfaces.
         </motion.p>
 
-        {/* Premium Glass Buttons */}
+        {/* Action Buttons */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.3, ease: [0.19, 1, 0.22, 1] }}
-          className="flex flex-col sm:flex-row items-center gap-6 pointer-events-auto z-20"
+          className="flex mt-7 flex-col sm:flex-row items-center gap-6 pointer-events-auto z-20"
         >
           <a href="#projects" className="relative group px-10 py-4 rounded-full bg-white text-black font-bold text-sm tracking-[0.15em] uppercase overflow-hidden cursor-none shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_40px_rgba(0,242,254,0.4)] transition-all duration-500 hover:-translate-y-1">
             <span className="relative z-10 group-hover:text-white transition-colors duration-500">Explore My Work</span>
@@ -132,20 +123,6 @@ export default function Hero() {
           <a href="Ali.Resume.pdf" download className="glass-panel !py-4 !px-10 !rounded-full font-bold text-sm tracking-[0.15em] uppercase text-white hover:bg-white/10 hover:border-accent-cyan hover:shadow-[0_0_20px_rgba(0,242,254,0.2)] transition-all duration-300 hover:-translate-y-1 cursor-none backdrop-blur-md">
             Download Resume
           </a>
-        </motion.div>
-
-        {/* Social Links */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.5, ease: [0.19, 1, 0.22, 1] }}
-          className="mt-12 flex items-center gap-4 sm:gap-6 text-[0.7rem] sm:text-xs font-bold tracking-[0.2em] uppercase text-text-muted pointer-events-auto z-20"
-        >
-          <a href="https://github.com/Mohdali644" target="_blank" rel="noreferrer" className="hover:text-accent-cyan hover:drop-shadow-[0_0_10px_#00f2fe] transition-all cursor-none">GitHub</a>
-          <span className="text-white/20">//</span>
-          <a href="https://www.linkedin.com/in/mohd-ali-dev/" target="_blank" rel="noreferrer" className="hover:text-accent-cyan hover:drop-shadow-[0_0_10px_#00f2fe] transition-all cursor-none">LinkedIn</a>
-          <span className="text-white/20">//</span>
-          <a href="mailto:envied94@gmail.com" className="hover:text-accent-cyan hover:drop-shadow-[0_0_10px_#00f2fe] transition-all cursor-none">Email</a>
         </motion.div>
 
       </div>

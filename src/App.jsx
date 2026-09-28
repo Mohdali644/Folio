@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import CustomCursor from './components/CustomCursor';
 import BootSequence from './components/BootSequence';
 import Header from './components/Header';
@@ -17,7 +18,7 @@ function App() {
     <>
       <CustomCursor />
       
-      {/* 1. Omega Boot Sequence */}
+      {/* 1. Extreme Zoom Boot Sequence */}
       {!bootComplete && <BootSequence onComplete={() => setBootComplete(true)} />}
       
       {/* 2. Main Portfolio Engine */}
@@ -25,14 +26,13 @@ function App() {
         {bootComplete && (
           <>
             <Header />
-            <main>
+            <main className="bg-[#030305] text-white min-h-screen font-sans selection:bg-accent-cyan/30">
               <Hero />
               <About />
               <Experience />
               <Skills />
               <Projects />
               <Contact />
-              {/* Future Components: About, Skills, Projects, Contact will go here */}
             </main>
             <Footer />
           </>
