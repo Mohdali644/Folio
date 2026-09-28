@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
 
 // Your exact core languages and frameworks
@@ -91,23 +90,23 @@ function SpatialCard({ category, catIndex }) {
       />
 
       {/* 3. Liquid Gradient Mesh (Visible on Hover) */}
-      <div className="absolute -inset-[100%] z-0 opacity-0 group-hover:opacity-20 transition-opacity duration-1000 pointer-events-none mix-blend-screen bg-[radial-gradient(ellipse_at_center,rgba(0,242,254,0.4)_0%,rgba(176,106,179,0.3)_50%,transparent_100%)] blur-[80px] animate-[spin_20s_linear_infinite]"></div>
+      <div className="absolute -inset-full z-0 opacity-0 group-hover:opacity-20 transition-opacity duration-1000 pointer-events-none mix-blend-screen bg-[radial-gradient(ellipse_at_center,rgba(0,242,254,0.4)_0%,rgba(176,106,179,0.3)_50%,transparent_100%)] blur-[80px] animate-[spin_20s_linear_infinite]"></div>
       
       {/* 4. Elegant Top Border Highlight */}
-      <div className="absolute top-0 left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-transparent via-white/20 group-hover:via-accent-cyan/50 to-transparent z-10 transition-colors duration-700"></div>
+      <div className="absolute top-0 left-[10%] right-[10%] h-px bg-linear-to-r from-transparent via-white/20 group-hover:via-accent-cyan/50 to-transparent z-10 transition-colors duration-700"></div>
 
       {/* ================= CONTENT ================= */}
       <div className="relative z-10">
         
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 pb-6 border-b border-white/[0.03]">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 pb-6 border-b border-white/3">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] group-hover:border-accent-cyan/30 group-hover:shadow-[inset_0_0_20px_rgba(0,242,254,0.1)] transition-all duration-500">
+            <div className="w-12 h-12 rounded-full bg-white/3 border border-white/10 flex items-center justify-center shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] group-hover:border-accent-cyan/30 group-hover:shadow-[inset_0_0_20px_rgba(0,242,254,0.1)] transition-all duration-500">
               <span className="text-2xl text-white/70 group-hover:text-accent-cyan transition-colors">{category.icon}</span>
             </div>
             <h3 className="text-2xl font-medium text-white/90 tracking-wide">{category.title}</h3>
           </div>
-          <div className="px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/5 flex items-center gap-2 group-hover:bg-accent-cyan/5 transition-colors">
+          <div className="px-4 py-1.5 rounded-full bg-white/2 border border-white/5 flex items-center gap-2 group-hover:bg-accent-cyan/5 transition-colors">
             <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan/70 group-hover:bg-accent-cyan group-hover:shadow-[0_0_10px_#00f2fe] transition-all"></span>
             <span className="text-xs text-white/50 tracking-widest uppercase">{category.status}</span>
           </div>
@@ -129,14 +128,14 @@ function SpatialCard({ category, catIndex }) {
               </div>
               
               {/* Liquid Progress Bar */}
-              <div className="relative w-full h-1.5 bg-white/[0.03] rounded-full overflow-hidden shadow-[inset_0_1px_3px_rgba(0,0,0,0.5)]">
+              <div className="relative w-full h-1.5 bg-white/3 rounded-full overflow-hidden shadow-[inset_0_1px_3px_rgba(0,0,0,0.5)]">
                 {/* Scroll-Triggered Animation happens right here */}
                 <motion.div 
                   initial={{ width: 0 }}
                   whileInView={{ width: `${skill.level}%` }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 1.5, delay: 0.2 + (skillIndex * 0.15), ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute top-0 left-0 h-full bg-gradient-to-r from-transparent via-accent-cyan/50 to-accent-cyan rounded-full"
+                  className="absolute top-0 left-0 h-full bg-linear-to-r from-transparent via-accent-cyan/50 to-accent-cyan rounded-full"
                 >
                   {/* Glowing Core at the tip */}
                   <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-full bg-white blur-[2px] rounded-full group-hover/skill:shadow-[0_0_15px_#00f2fe] transition-shadow duration-300"></div>
@@ -160,8 +159,8 @@ export default function Skills() {
     <section id="skills" className="py-32 relative z-10 w-full overflow-hidden">
       
       {/* Minimal Ambient Orbs */}
-      <div className="absolute top-[20%] left-[10%] w-[600px] h-[600px] bg-accent-cyan/5 rounded-full blur-[200px] pointer-events-none"></div>
-      <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-accent-blue/5 rounded-full blur-[150px] pointer-events-none"></div>
+      <div className="absolute top-[20%] left-[10%] w-150 h-150 bg-accent-cyan/5 rounded-full blur-[200px] pointer-events-none"></div>
+      <div className="absolute bottom-[10%] right-[10%] w-125 h-125 bg-accent-blue/5 rounded-full blur-[150px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
@@ -177,7 +176,7 @@ export default function Skills() {
             Technical Architecture
           </span>
           <h2 className="text-[clamp(3rem,6vw,5rem)] font-light text-white leading-none tracking-tight">
-            Core <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-accent-cyan to-white bg-[length:200%_auto] animate-[gradient_4s_linear_infinite]">Arsenal</span>
+            Core <span className="font-bold text-transparent bg-clip-text bg-linear-to-r from-white via-accent-cyan to-white bg-size-[200%_auto] animate-[gradient_4s_linear_infinite]">Arsenal</span>
           </h2>
         </motion.div>
 

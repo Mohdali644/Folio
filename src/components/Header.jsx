@@ -30,7 +30,7 @@ function MagneticSocialIcon({ href, children }) {
       onMouseLeave={handleMouseLeave}
       whileHover={{ scale: 1.15 }}
       whileTap={{ scale: 0.9 }}
-      className="relative group w-11 h-11 flex items-center justify-center rounded-full bg-white/[0.03] border border-white/10 transition-all duration-300 z-10 cursor-none shadow-[0_5px_15px_rgba(0,0,0,0.3)] hover:bg-white/[0.08] hover:border-accent-cyan/50 hover:shadow-[0_0_20px_rgba(0,242,254,0.3)]"
+      className="relative group w-11 h-11 flex items-center justify-center rounded-full bg-white/3 border border-white/10 transition-all duration-300 z-10 cursor-none shadow-[0_5px_15px_rgba(0,0,0,0.3)] hover:bg-white/8 hover:border-accent-cyan/50 hover:shadow-[0_0_20px_rgba(0,242,254,0.3)]"
     >
       <motion.div 
         style={{ x: springX, y: springY }} 
@@ -74,17 +74,17 @@ function MagneticLogo() {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, x: pullX, y: pullY, transformStyle: "preserve-3d", perspective: 1000 }}
-      className="relative group flex items-center justify-center flex-shrink-0 z-50 cursor-none"
+      className="relative group flex items-center justify-center shrink-0 z-50 cursor-none"
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-accent-cyan via-accent-blue to-[#b06ab3] blur-[25px] opacity-0 group-hover:opacity-40 transition-opacity duration-500 rounded-full"></div>
-      <div className="relative flex items-center justify-center px-7 py-3 rounded-full bg-white/[0.01] backdrop-blur-3xl border border-white/5 overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.6)] group-hover:bg-white/[0.03] group-hover:border-white/20 transition-colors duration-500" style={{ transformStyle: "preserve-3d" }}>
-        <div className="absolute -inset-[200%] z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-[conic-gradient(from_0deg,transparent_0%,rgba(0,242,254,0.2)_25%,transparent_50%,rgba(176,106,179,0.15)_75%,transparent_100%)] animate-[spin_6s_linear_infinite]"></div>
-        <div className="absolute inset-[1px] bg-[#0a0a0f]/80 rounded-full z-0 backdrop-blur-xl"></div>
+      <div className="absolute inset-0 bg-linear-to-r from-accent-cyan via-accent-blue to-[#b06ab3] blur-[25px] opacity-0 group-hover:opacity-40 transition-opacity duration-500 rounded-full"></div>
+      <div className="relative flex items-center justify-center px-7 py-3 rounded-full bg-white/1 backdrop-blur-3xl border border-white/5 overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.6)] group-hover:bg-white/3 group-hover:border-white/20 transition-colors duration-500" style={{ transformStyle: "preserve-3d" }}>
+        <div className="absolute inset-[-200%] z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-[conic-gradient(from_0deg,transparent_0%,rgba(0,242,254,0.2)_25%,transparent_50%,rgba(176,106,179,0.15)_75%,transparent_100%)] animate-[spin_6s_linear_infinite]"></div>
+        <div className="absolute inset-px bg-[#0a0a0f]/80 rounded-full z-0 backdrop-blur-xl"></div>
         <motion.div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 mix-blend-overlay pointer-events-none rounded-full transition-opacity duration-500" style={{ background: useMotionTemplate`radial-gradient(120px circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.4), transparent 80%)` }} />
-        <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-white/40 group-hover:via-accent-cyan to-transparent z-10 transition-colors duration-500"></div>
+        <div className="absolute top-0 left-1/4 right-1/4 h-px bg-linear-to-r from-transparent via-white/40 group-hover:via-accent-cyan to-transparent z-10 transition-colors duration-500"></div>
         <div className="relative z-20 flex items-baseline font-black tracking-tighter" style={{ transform: "translateZ(40px)" }}>
           <span className="text-3xl sm:text-4xl text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] font-sans">M</span>
-          <span className="text-3xl sm:text-4xl text-transparent bg-clip-text bg-gradient-to-br from-white/90 to-white/30 font-sans">A</span>
+          <span className="text-3xl sm:text-4xl text-transparent bg-clip-text bg-linear-to-br from-white/90 to-white/30 font-sans">A</span>
           <motion.span className="text-accent-cyan text-4xl sm:text-5xl leading-none -ml-0.5" animate={{ textShadow: ["0px 0px 5px rgba(0,242,254,0.3)", "0px 0px 20px rgba(0,242,254,0.9)", "0px 0px 5px rgba(0,242,254,0.3)"] }} transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}>.</motion.span>
         </div>
       </div>
@@ -118,7 +118,7 @@ export default function Header() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.5, ease: [0.19, 1, 0.22, 1] }}
-      className={`fixed top-[-6px] left-0 w-full z-[9900] transition-all duration-700 ease-out pointer-events-none ${scrolled ? 'py-4' : 'py-8'}`}
+      className={`fixed -top-1.5 left-0 w-full z-9900 transition-all duration-700 ease-out pointer-events-none ${scrolled ? 'py-4' : 'py-8'}`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-8 flex items-start justify-between pointer-events-auto">
         
@@ -127,7 +127,7 @@ export default function Header() {
 
         {/* CENTER: Liquid Navigation */}
         <nav 
-          className="hidden lg:flex items-center gap-2 p-2 bg-[#050505]/60 border border-white/5 rounded-full backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5),inset_0_0_20px_rgba(255,255,255,0.02)] flex-shrink-0"
+          className="hidden lg:flex items-center gap-2 p-2 bg-bg-base/60 border border-white/5 rounded-full backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5),inset_0_0_20px_rgba(255,255,255,0.02)] shrink-0"
           onMouseLeave={() => setHoveredTab(null)}
         >
           {navLinks.map((link) => (
@@ -157,7 +157,7 @@ export default function Header() {
         {/* ==========================================
             RIGHT: VERTICAL MAGNETIC SOCIAL DOCK
         ========================================== */}
-        <div className="relative w-[50px] flex justify-end">
+        <div className="relative w-12.5 flex justify-end">
           
           {/* Removed the container background, borders, and padding. Just a clean, open flex column. */}
           <div className="absolute top-2 right-0 flex flex-col gap-6">

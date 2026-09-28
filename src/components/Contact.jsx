@@ -15,7 +15,7 @@ const PremiumInput = ({ label, icon, type = "text", placeholder, value, onChange
       
       <div className="relative">
         {/* Ambient Outer Glow (Activates on Hover & Focus) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-accent-cyan to-accent-blue rounded-xl blur-lg opacity-0 group-hover/field:opacity-20 group-focus-within/field:opacity-40 transition-opacity duration-500 -z-10"></div>
+        <div className="absolute inset-0 bg-linear-to-r from-accent-cyan to-accent-blue rounded-xl blur-lg opacity-0 group-hover/field:opacity-20 group-focus-within/field:opacity-40 transition-opacity duration-500 -z-10"></div>
 
         {/* Integrated SVG Icon */}
         <div className="absolute left-4 top-[1.1rem] w-5 h-5 text-white/20 group-focus-within/field:text-accent-cyan transition-colors duration-300 z-20 pointer-events-none">
@@ -30,7 +30,7 @@ const PremiumInput = ({ label, icon, type = "text", placeholder, value, onChange
             placeholder={placeholder}
             value={value}
             onChange={onChange}
-            className="relative w-full bg-white/[0.04] backdrop-blur-2xl border border-white/10 rounded-xl pl-12 pr-5 py-4 text-white placeholder:text-white/30 focus:outline-none focus:border-accent-cyan focus:bg-white/[0.08] focus:shadow-[inset_0_0_25px_rgba(0,242,254,0.15)] transition-all duration-500 resize-none cursor-none z-10"
+            className="relative w-full bg-white/4 backdrop-blur-2xl border border-white/10 rounded-xl pl-12 pr-5 py-4 text-white placeholder:text-white/30 focus:outline-none focus:border-accent-cyan focus:bg-white/8 focus:shadow-[inset_0_0_25px_rgba(0,242,254,0.15)] transition-all duration-500 resize-none cursor-none z-10"
           />
         ) : (
           <input
@@ -39,7 +39,7 @@ const PremiumInput = ({ label, icon, type = "text", placeholder, value, onChange
             placeholder={placeholder}
             value={value}
             onChange={onChange}
-            className="relative w-full bg-white/[0.04] backdrop-blur-2xl border border-white/10 rounded-xl pl-12 pr-5 py-4 text-white placeholder:text-white/30 focus:outline-none focus:border-accent-cyan focus:bg-white/[0.08] focus:shadow-[inset_0_0_25px_rgba(0,242,254,0.15)] transition-all duration-500 cursor-none z-10"
+            className="relative w-full bg-white/4 backdrop-blur-2xl border border-white/10 rounded-xl pl-12 pr-5 py-4 text-white placeholder:text-white/30 focus:outline-none focus:border-accent-cyan focus:bg-white/8 focus:shadow-[inset_0_0_25px_rgba(0,242,254,0.15)] transition-all duration-500 cursor-none z-10"
           />
         )}
       </div>
@@ -72,8 +72,8 @@ export default function Contact() {
     <section id="contact" className="py-32 relative w-full bg-transparent overflow-x-clip" ref={containerRef}>
       
       {/* GPU OPTIMIZED AMBIENT BACKGROUND */}
-      <div className="absolute top-[20%] left-[-10%] w-[50vw] h-[50vw] max-w-[600px] max-h-[600px] bg-accent-cyan/5 rounded-full blur-[120px] pointer-events-none transform-gpu will-change-transform z-0"></div>
-      <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] bg-[#b06ab3]/5 rounded-full blur-[100px] pointer-events-none transform-gpu will-change-transform z-0"></div>
+      <div className="absolute top-[20%] left-[-10%] w-[50vw] h-[50vw] max-w-150 max-h-150 bg-accent-cyan/5 rounded-full blur-[120px] pointer-events-none transform-gpu will-change-transform z-0"></div>
+      <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] max-w-125 max-h-125 bg-[#b06ab3]/5 rounded-full blur-[100px] pointer-events-none transform-gpu will-change-transform z-0"></div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
@@ -88,7 +88,7 @@ export default function Contact() {
             Secure Channel
           </span>
           <h2 className="text-[clamp(3.5rem,7vw,5rem)] font-light text-white leading-none tracking-tight">
-            Let's <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-accent-cyan to-white bg-[length:200%_auto] animate-[gradient_4s_linear_infinite]">Connect</span>
+            Let's <span className="font-bold text-transparent bg-clip-text bg-linear-to-r from-white via-accent-cyan to-white bg-size-[200%_auto] animate-[gradient_4s_linear_infinite]">Connect</span>
           </h2>
         </motion.div>
 
@@ -112,9 +112,9 @@ export default function Contact() {
 
             {/* Premium Info Cards */}
             <div className="flex flex-col gap-4">
-              <a href="mailto:envied94@gmail.com" className="group relative p-6 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-xl overflow-hidden hover:border-accent-cyan/30 transition-colors duration-500 cursor-none flex items-center gap-6">
-                <div className="absolute inset-0 bg-gradient-to-r from-accent-cyan/0 via-accent-cyan/5 to-transparent -translate-x-[100%] group-hover:animate-[sweep_2s_ease-in-out_infinite] z-0"></div>
-                <div className="w-12 h-12 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] group-hover:border-accent-cyan/50 group-hover:shadow-[0_0_15px_rgba(0,242,254,0.2)] transition-all duration-500 z-10">
+              <a href="mailto:envied94@gmail.com" className="group relative p-6 rounded-2xl bg-white/2 border border-white/5 backdrop-blur-xl overflow-hidden hover:border-accent-cyan/30 transition-colors duration-500 cursor-none flex items-center gap-6">
+                <div className="absolute inset-0 bg-linear-to-r from-accent-cyan/0 via-accent-cyan/5 to-transparent -translate-x-full group-hover:animate-[sweep_2s_ease-in-out_infinite] z-0"></div>
+                <div className="w-12 h-12 rounded-full bg-white/3 border border-white/10 flex items-center justify-center shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] group-hover:border-accent-cyan/50 group-hover:shadow-[0_0_15px_rgba(0,242,254,0.2)] transition-all duration-500 z-10">
                   <span className="text-xl group-hover:scale-110 transition-transform duration-500">✉️</span>
                 </div>
                 <div className="flex flex-col z-10">
@@ -123,8 +123,8 @@ export default function Contact() {
                 </div>
               </a>
 
-              <div className="group relative p-6 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-xl hover:border-white/10 transition-colors duration-500 flex items-center gap-6">
-                <div className="w-12 h-12 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] group-hover:bg-white/[0.05] transition-all duration-500">
+              <div className="group relative p-6 rounded-2xl bg-white/2 border border-white/5 backdrop-blur-xl hover:border-white/10 transition-colors duration-500 flex items-center gap-6">
+                <div className="w-12 h-12 rounded-full bg-white/3 border border-white/10 flex items-center justify-center shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] group-hover:bg-white/5 transition-all duration-500">
                   <span className="text-xl group-hover:scale-110 transition-transform duration-500">📍</span>
                 </div>
                 <div className="flex flex-col">
@@ -145,10 +145,10 @@ export default function Contact() {
             className="relative"
           >
             {/* Form Container (Brighter glass to make inputs pop) */}
-            <div className="relative p-8 sm:p-10 rounded-[2rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl shadow-[0_30px_60px_rgba(0,0,0,0.6),inset_0_0_30px_rgba(255,255,255,0.02)] overflow-hidden">
+            <div className="relative p-8 sm:p-10 rounded-4xl bg-white/2 border border-white/5 backdrop-blur-3xl shadow-[0_30px_60px_rgba(0,0,0,0.6),inset_0_0_30px_rgba(255,255,255,0.02)] overflow-hidden">
               
               {/* Inner ambient flare */}
-              <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-accent-cyan/10 rounded-full blur-[80px] pointer-events-none transform-gpu z-0"></div>
+              <div className="absolute top-0 right-0 w-75 h-75 bg-accent-cyan/10 rounded-full blur-[80px] pointer-events-none transform-gpu z-0"></div>
 
               <form onSubmit={handleSubmit} className="relative z-10 flex flex-col gap-6">
                 
@@ -196,14 +196,14 @@ export default function Contact() {
                   disabled={isSubmitting}
                   className="group relative w-full flex items-center justify-center gap-3 mt-4 px-8 py-4 bg-[#0a0a0f] border border-white/10 rounded-xl overflow-hidden cursor-none transition-all duration-300 hover:border-accent-cyan/50 hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-accent-cyan/0 via-accent-cyan/10 to-transparent -translate-x-[150%] group-hover:animate-[sweep_1.5s_ease-in-out_infinite] z-0 skew-x-12"></div>
+                  <div className="absolute inset-0 bg-linear-to-r from-accent-cyan/0 via-accent-cyan/10 to-transparent translate-x-[-150%] group-hover:animate-[sweep_1.5s_ease-in-out_infinite] z-0 skew-x-12"></div>
                   
                   <span className="relative flex h-2.5 w-2.5 z-10">
                     <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isSubmitting ? 'bg-accent-blue' : 'bg-[#43e97b]'}`}></span>
                     <span className={`relative inline-flex rounded-full h-2.5 w-2.5 shadow-[0_0_15px_currentColor] ${isSubmitting ? 'bg-accent-blue' : 'bg-[#43e97b]'}`}></span>
                   </span>
                   
-                  <span className="relative z-10 text-[0.75rem] font-bold uppercase tracking-[0.2em] text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-accent-cyan transition-all duration-300">
+                  <span className="relative z-10 text-[0.75rem] font-bold uppercase tracking-[0.2em] text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-white group-hover:to-accent-cyan transition-all duration-300">
                     {isSubmitting ? "Transmitting..." : "Initialize Uplink"}
                   </span>
                 </button>

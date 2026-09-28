@@ -87,27 +87,27 @@ function ProjectCard({ project, index }) {
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className="relative w-full rounded-[2rem] sm:rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl overflow-visible group cursor-none shadow-[0_30px_60px_rgba(0,0,0,0.4)] hover:border-white/20 transition-colors duration-700 transform-gpu"
+        className="relative w-full rounded-4xl sm:rounded-[3rem] bg-white/2 border border-white/5 backdrop-blur-3xl overflow-visible group cursor-none shadow-[0_30px_60px_rgba(0,0,0,0.4)] hover:border-white/20 transition-colors duration-700 transform-gpu"
       >
         {/* Holographic Glare */}
         <motion.div
-          className="absolute inset-0 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[2rem] sm:rounded-[3rem] mix-blend-overlay"
+          className="absolute inset-0 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-4xl sm:rounded-[3rem] mix-blend-overlay"
           style={{
             background: useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(255,255,255,0.15), transparent 40%)`
           }}
         />
 
         {/* Layout Grid inside Card */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[400px] sm:min-h-[500px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-100 sm:min-h-125">
           
           {/* ==========================================
               LEFT SIDE: THE IMAGE VISUALS
           ========================================== */}
-          <div className="relative p-4 sm:p-6 overflow-hidden rounded-t-[2rem] lg:rounded-l-[3rem] lg:rounded-tr-none h-64 lg:h-full lg:min-h-[400px]">
+          <div className="relative p-4 sm:p-6 overflow-hidden rounded-t-4xl lg:rounded-l-[3rem] lg:rounded-tr-none h-64 lg:h-full lg:min-h-100">
             
             {/* Visual Container (Pushed back slightly in 3D) */}
             <div 
-              className="absolute inset-4 sm:inset-6 rounded-2xl sm:rounded-3xl overflow-hidden bg-[#050505] border border-white/10 shadow-[inset_0_0_20px_rgba(0,0,0,0.8)] transform-gpu"
+              className="absolute inset-4 sm:inset-6 rounded-2xl sm:rounded-3xl overflow-hidden bg-bg-base border border-white/10 shadow-[inset_0_0_20px_rgba(0,0,0,0.8)] transform-gpu"
               style={{ transform: "translateZ(-20px)" }}
             >
               {/* THE ACTUAL PROJECT SCREENSHOT */}
@@ -119,7 +119,7 @@ function ProjectCard({ project, index }) {
               />
 
               {/* Cinematic Color Overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${project.imageGradient} mix-blend-overlay opacity-40 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none`}></div>
+              <div className={`absolute inset-0 bg-linear-to-br ${project.imageGradient} mix-blend-overlay opacity-40 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none`}></div>
               
               {/* Edge Vignette */}
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#050505_100%)] pointer-events-none"></div>
@@ -134,7 +134,7 @@ function ProjectCard({ project, index }) {
             style={{ transform: "translateZ(60px)", transformStyle: "preserve-3d" }}
           >
             <div className="flex items-center gap-4 mb-6">
-              <span className="h-[1px] w-8 bg-accent-cyan shadow-[0_0_10px_#00f2fe]"></span>
+              <span className="h-px w-8 bg-accent-cyan shadow-[0_0_10px_#00f2fe]"></span>
               <span className="text-accent-cyan text-[0.65rem] sm:text-xs font-bold tracking-[0.25em] uppercase drop-shadow-[0_0_8px_rgba(0,242,254,0.5)]">
                 {project.category}
               </span>
@@ -153,7 +153,7 @@ function ProjectCard({ project, index }) {
               {project.tech.map((tech, i) => (
                 <span 
                   key={i} 
-                  className="px-3 sm:px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-white/70 text-xs sm:text-sm font-medium tracking-wide shadow-[inset_0_0_10px_rgba(255,255,255,0.02)] group-hover:border-accent-cyan/30 group-hover:text-accent-cyan transition-colors duration-500"
+                  className="px-3 sm:px-4 py-1.5 rounded-full bg-white/3 border border-white/10 text-white/70 text-xs sm:text-sm font-medium tracking-wide shadow-[inset_0_0_10px_rgba(255,255,255,0.02)] group-hover:border-accent-cyan/30 group-hover:text-accent-cyan transition-colors duration-500"
                 >
                   {tech}
                 </span>
@@ -193,8 +193,8 @@ export default function Projects() {
     <section id="projects" className="py-32 relative w-full bg-transparent overflow-x-clip">
       
       {/* GPU Optimized Ambient Background Orbs */}
-      <div className="absolute top-[10%] left-[0%] w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] bg-accent-cyan/5 rounded-full blur-[120px] pointer-events-none transform-gpu will-change-transform z-0"></div>
-      <div className="absolute bottom-[20%] right-[0%] w-[50vw] h-[50vw] max-w-[600px] max-h-[600px] bg-[#b06ab3]/5 rounded-full blur-[120px] pointer-events-none transform-gpu will-change-transform z-0"></div>
+      <div className="absolute top-[10%] left-[0%] w-[60vw] h-[60vw] max-w-200 max-h-200 bg-accent-cyan/5 rounded-full blur-[120px] pointer-events-none transform-gpu will-change-transform z-0"></div>
+      <div className="absolute bottom-[20%] right-[0%] w-[50vw] h-[50vw] max-w-150 max-h-150 bg-[#b06ab3]/5 rounded-full blur-[120px] pointer-events-none transform-gpu will-change-transform z-0"></div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
@@ -209,8 +209,8 @@ export default function Projects() {
           <span className="text-accent-cyan text-sm font-medium tracking-[0.3em] uppercase mb-4 opacity-80 drop-shadow-[0_0_8px_rgba(0,242,254,0.4)]">
             Execution & Delivery
           </span>
-          <h2 className="text-[clamp(3.5rem,7vw,5rem)] font-light text-white leading-none tracking-tight">
-            Selected <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-accent-cyan to-white bg-[length:200%_auto] animate-[gradient_4s_linear_infinite]">Works</span>
+            <h2 className="text-[clamp(3.5rem,7vw,5rem)] font-light text-white leading-none tracking-tight">
+            Selected <span className="font-bold text-transparent bg-clip-text bg-linear-to-r from-white via-accent-cyan to-white bg-size-[200%_auto] animate-[gradient_4s_linear_infinite]">Works</span>
           </h2>
         </motion.div>
 

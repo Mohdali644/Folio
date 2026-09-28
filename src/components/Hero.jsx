@@ -47,7 +47,7 @@ export default function Hero() {
       <div className="absolute bottom-[-20%] right-[-10%] w-[40vw] h-[40vw] bg-accent-blue rounded-full blur-[100px] opacity-30 mix-blend-screen animate-[pulseOrb_10s_ease-in-out_infinite_alternate-reverse] transform-gpu will-change-transform z-0"></div>
       <div className="absolute top-[40%] left-[40%] w-[30vw] h-[30vw] bg-[#b06ab3] rounded-full blur-[90px] opacity-20 mix-blend-screen animate-[spin_15s_linear_infinite] transform-gpu will-change-transform z-0"></div>
 
-      <div id="hero-particles" className="absolute inset-0 z-0 mix-blend-screen [mask-image:radial-gradient(ellipse_at_center,black,transparent)] pointer-events-none"></div>
+      <div id="hero-particles" className="absolute inset-0 z-0 mix-blend-screen mask-[radial-gradient(ellipse_at_center,black,transparent)] pointer-events-none"></div>
 
       <div className="relative z-10 flex flex-col items-center pointer-events-none mt-10 w-full px-6">
         
@@ -82,7 +82,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-8 text-[clamp(1.5rem,4vw,2.5rem)] font-medium tracking-tight text-white/80"
         >
           <span>I am a</span>
-          <div className="relative h-[1.6em] mt-2 min-w-[280px] sm:min-w-[400px] overflow-hidden flex justify-center sm:justify-start">
+          <div className="relative h-[1.6em] mt-2 min-w-70 sm:min-w-100 overflow-hidden flex justify-center sm:justify-start">
             <AnimatePresence mode="popLayout">
               <motion.span
                 key={roleIndex}
@@ -90,7 +90,7 @@ export default function Hero() {
                 animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
                 exit={{ y: -40, opacity: 0, filter: "blur(4px)" }}
                 transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
-                className="absolute font-black bg-gradient-to-r from-accent-cyan via-white to-accent-blue bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,242,254,0.2)] transform-gpu"
+                className="absolute font-black bg-linear-to-r from-accent-cyan via-white to-accent-blue bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,242,254,0.2)] transform-gpu"
               >
                 {roles[roleIndex]}
               </motion.span>
@@ -117,10 +117,10 @@ export default function Hero() {
         >
           <a href="#projects" className="relative group px-10 py-4 rounded-full bg-white text-black font-bold text-sm tracking-[0.15em] uppercase overflow-hidden cursor-none shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_40px_rgba(0,242,254,0.4)] transition-all duration-500 hover:-translate-y-1">
             <span className="relative z-10 group-hover:text-white transition-colors duration-500">Explore My Work</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-accent-cyan to-accent-blue scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] z-0"></div>
+            <div className="absolute inset-0 bg-linear-to-r from-accent-cyan to-accent-blue scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] z-0"></div>
           </a>
 
-          <a href="Ali.Resume.pdf" download className="glass-panel !py-4 !px-10 !rounded-full font-bold text-sm tracking-[0.15em] uppercase text-white hover:bg-white/10 hover:border-accent-cyan hover:shadow-[0_0_20px_rgba(0,242,254,0.2)] transition-all duration-300 hover:-translate-y-1 cursor-none backdrop-blur-md">
+          <a href="Ali.Resume.pdf" download className="glass-panel py-4! px-10! rounded-full! font-bold text-sm tracking-[0.15em] uppercase text-white hover:bg-white/10 hover:border-accent-cyan hover:shadow-[0_0_20px_rgba(0,242,254,0.2)] transition-all duration-300 hover:-translate-y-1 cursor-none backdrop-blur-md">
             Download Resume
           </a>
         </motion.div>

@@ -47,7 +47,7 @@ export default function BootSequence({ onComplete }) {
     <AnimatePresence>
       {isVisible && (
         <motion.div 
-          className="fixed inset-0 z-[999999] flex items-center justify-center overflow-hidden bg-[#030305] cursor-none select-none"
+          className="fixed inset-0 z-999999 flex items-center justify-center overflow-hidden bg-[#030305] cursor-none select-none"
           initial={{ opacity: 1 }}
           animate={isUnlocked ? { opacity: 0 } : { opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeIn" }}
@@ -65,11 +65,11 @@ export default function BootSequence({ onComplete }) {
             <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('data:image/svg+xml;utf8,<svg_viewBox=%220_0_200_200%22_xmlns=%22http://www.w3.org/2000/svg%22><filter_id=%22noise%22><feTurbulence_type=%22fractalNoise%22_baseFrequency=%220.8%22_numOctaves=%223%22/></filter><rect_width=%22100%25%22_height=%22100%25%22_filter=%22url(%23noise)%22/></svg>')] z-0"></div>
             
             {/* 3D Grid */}
-            <div className="absolute bottom-[-20%] w-[150%] h-[60vh] opacity-20 bg-[linear-gradient(rgba(0,242,254,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(0,242,254,0.2)_1px,transparent_1px)] bg-[size:40px_40px] [transform:perspective(600px)_rotateX(75deg)] z-0 [mask-image:linear-gradient(to_bottom,transparent,black)]"></div>
+            <div className="absolute bottom-[-20%] w-[150%] h-[60vh] opacity-20 bg-[linear-gradient(rgba(0,242,254,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(0,242,254,0.2)_1px,transparent_1px)] bg-size-[40px_40px] transform-[perspective(600px)_rotateX(75deg)] z-0 mask-[linear-gradient(to_bottom,transparent,black)]"></div>
 
             {/* Ambient Center Glow */}
             <div 
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-accent-cyan/20 rounded-full blur-[100px] mix-blend-screen z-0"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-75 h-75 bg-accent-cyan/20 rounded-full blur-[100px] mix-blend-screen z-0"
               style={{ transform: `translate(-50%, -50%) scale(${progress / 50})` }}
             />
 
@@ -99,22 +99,22 @@ export default function BootSequence({ onComplete }) {
           >
             {/* COMPLEX SVG REACTOR RINGS */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <svg className="absolute w-[500px] h-[500px] sm:w-[600px] sm:h-[600px] animate-[spin_25s_linear_infinite]" viewBox="0 0 100 100">
+              <svg className="absolute w-125 h-125 sm:w-150 sm:h-150 animate-[spin_25s_linear_infinite]" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(0,242,254,0.1)" strokeWidth="0.2" />
                 <circle cx="50" cy="50" r="48" fill="none" stroke="#00f2fe" strokeWidth="0.5" strokeDasharray="2 8" />
               </svg>
-              <svg className="absolute w-[350px] h-[350px] sm:w-[450px] sm:h-[450px] animate-[spin_15s_linear_infinite_reverse]" viewBox="0 0 100 100">
+              <svg className="absolute w-87.5 h-87.5 sm:w-112.5 sm:h-112.5 animate-[spin_15s_linear_infinite_reverse]" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(79,172,254,0.3)" strokeWidth="0.5" strokeDasharray="15 30" />
                 <polygon points="50,5 93,27 93,73 50,95 7,73 7,27" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="0.2" />
               </svg>
-              <svg className="absolute w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] animate-[spin_8s_linear_infinite]" viewBox="0 0 100 100">
+              <svg className="absolute w-70 h-70 sm:w-85 sm:h-85 animate-[spin_8s_linear_infinite]" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="40" fill="none" stroke="#00f2fe" strokeWidth="1" strokeDasharray="1 10 30 10" />
                 <circle cx="50" cy="50" r="35" fill="none" stroke="rgba(67,233,123,0.3)" strokeWidth="0.2" strokeDasharray="4 4" />
               </svg>
             </div>
 
             {/* CENTRAL DATA HUB BORDER */}
-            <div className={`relative flex items-center justify-center w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] rounded-full transition-colors duration-500 border-2 ${progress === 100 ? 'border-[#43e97b]' : 'border-accent-cyan/30'}`}>
+            <div className={`relative flex items-center justify-center w-55 h-55 sm:w-70 sm:h-70 rounded-full transition-colors duration-500 border-2 ${progress === 100 ? 'border-[#43e97b]' : 'border-accent-cyan/30'}`}>
               
               <svg className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="1.5" />

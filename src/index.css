@@ -6,39 +6,29 @@
    SMOOTH SCROLLING & GPU OPTIMIZATIONS
 ========================================== */
 html {
-  /* Kills the elastic bounce effect at the top/bottom of the page on Mac/iOS */
   overscroll-behavior: none; 
-  /* Prevents the layout from shifting when the virtual scrollbar initializes */
   scrollbar-gutter: stable;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; 
 }
 
 body {
-  /* Forces the GPU to render text smoothly, preventing jitter during heavy 3D animations */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  
-  /* Hides the ugly default scrollbar for a clean, cinematic app-like feel */
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* Hides scrollbar for Chrome, Safari and Opera */
 body::-webkit-scrollbar {
   display: none;
 }
 
-/* ==========================================
-   TAILWIND THEME SETTINGS
-========================================== */
 @theme {
   --color-bg-base: #050505;
   --color-accent-cyan: #00f2fe;
   --color-accent-blue: #4facfe;
   --color-text-muted: #a0a0a0;
   
-  /* 2. Override default sans font */
   --font-sans: "Plus Jakarta Sans", sans-serif;
 }
 

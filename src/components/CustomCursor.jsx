@@ -39,7 +39,7 @@ export default function CustomCursor() {
     <>
       {/* 1. The tiny precision dot */}
       <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 bg-accent-cyan rounded-full pointer-events-none z-[10000] -translate-x-1/2 -translate-y-1/2"
+        className="fixed top-0 left-0 w-1.5 h-1.5 bg-accent-cyan rounded-full pointer-events-none z-10000 -translate-x-1/2 -translate-y-1/2"
         style={{
           x: cursorX,
           y: cursorY,
@@ -48,7 +48,7 @@ export default function CustomCursor() {
 
       {/* 2. The magnetic tracker outline */}
       <motion.div
-        className={`fixed top-0 left-0 rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 border transition-colors duration-300 ${
+          className={`fixed top-0 left-0 rounded-full pointer-events-none z-9999 -translate-x-1/2 -translate-y-1/2 border transition-colors duration-300 ${
           isHovering 
             ? 'w-16 h-16 bg-[#b06ab3]/10 border-[#b06ab3] shadow-[0_0_25px_rgba(176,106,179,0.3)]' 
             : 'w-10 h-10 border-accent-cyan/40 shadow-[0_0_15px_rgba(0,242,254,0.1)]'
