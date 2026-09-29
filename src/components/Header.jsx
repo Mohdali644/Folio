@@ -121,8 +121,8 @@ function MagneticLogo() {
               className="w-2 h-2 ml-1 sm:w-2.5 sm:h-2.5 bg-accent-cyan shadow-[0_0_15px_#00f2fe,inset_0_0_8px_#fff]"
               animate={{ 
                 rotate: [0, 90, 180, 270, 360],
-                scale: [2.5,1, 1],
-                borderRadius: ["10%", "50%","100%", "20%"]
+                scale: [2,1, 2],
+                borderRadius: ["10%", "30%","100%", "20%"]
               }}
               transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
             />
