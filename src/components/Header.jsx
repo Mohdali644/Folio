@@ -50,10 +50,16 @@ function MagneticLogo() {
   const y = useMotionValue(0);
   const mouseXSpring = useSpring(x, { stiffness: 300, damping: 20 });
   const mouseYSpring = useSpring(y, { stiffness: 300, damping: 20 });
+  
+  // 3D Tilt calculation
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
+  
+  // Magnetic Pull calculation
   const pullX = useTransform(mouseXSpring, [-0.5, 0.5], [-12, 12]);
   const pullY = useTransform(mouseYSpring, [-0.5, 0.5], [-12, 12]);
+  
+  // Dynamic Glare calculation
   const glareX = useTransform(mouseXSpring, [-0.5, 0.5], [10, 90]);
   const glareY = useTransform(mouseYSpring, [-0.5, 0.5], [10, 90]);
 
@@ -76,17 +82,53 @@ function MagneticLogo() {
       style={{ rotateX, rotateY, x: pullX, y: pullY, transformStyle: "preserve-3d", perspective: 1000 }}
       className="relative group flex items-center justify-center shrink-0 z-50 cursor-none"
     >
-      <div className="absolute inset-0 bg-linear-to-r from-accent-cyan via-accent-blue to-[#b06ab3] blur-[25px] opacity-0 group-hover:opacity-40 transition-opacity duration-500 rounded-full"></div>
-      <div className="relative flex items-center justify-center px-7 py-3 rounded-full bg-white/1 backdrop-blur-3xl border border-white/5 overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.6)] group-hover:bg-white/3 group-hover:border-white/20 transition-colors duration-500" style={{ transformStyle: "preserve-3d" }}>
-        <div className="absolute inset-[-200%] z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-[conic-gradient(from_0deg,transparent_0%,rgba(0,242,254,0.2)_25%,transparent_50%,rgba(176,106,179,0.15)_75%,transparent_100%)] animate-[spin_6s_linear_infinite]"></div>
-        <div className="absolute inset-px bg-[#0a0a0f]/80 rounded-full z-0 backdrop-blur-xl"></div>
-        <motion.div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 mix-blend-overlay pointer-events-none rounded-full transition-opacity duration-500" style={{ background: useMotionTemplate`radial-gradient(120px circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.4), transparent 80%)` }} />
-        <div className="absolute top-0 left-1/4 right-1/4 h-px bg-linear-to-r from-transparent via-white/40 group-hover:via-accent-cyan to-transparent z-10 transition-colors duration-500"></div>
-        <div className="relative z-20 flex items-baseline font-black tracking-tighter" style={{ transform: "translateZ(40px)" }}>
-          <span className="text-3xl sm:text-4xl text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] font-sans">M</span>
-          <span className="text-3xl sm:text-4xl text-transparent bg-clip-text bg-linear-to-br from-white/90 to-white/30 font-sans">A</span>
-          <motion.span className="text-accent-cyan text-4xl sm:text-5xl leading-none -ml-0.5" animate={{ textShadow: ["0px 0px 5px rgba(0,242,254,0.3)", "0px 0px 20px rgba(0,242,254,0.9)", "0px 0px 5px rgba(0,242,254,0.3)"] }} transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}>.</motion.span>
+      {/* 1. Ambient Holographic Aura */}
+      <div className="absolute inset-0 bg-linear-to-r from-accent-cyan via-accent-blue to-[#b06ab3] blur-[20px] opacity-0 group-hover:opacity-40 transition-opacity duration-700 rounded-2xl"></div>
+
+      {/* 2. Physical Glass Chassis (Upgraded to a high-tech square-ish box) */}
+      <div 
+        className="relative flex items-center justify-center px-6 py-3.5 rounded-3xl bg-[#030305]/80 backdrop-blur-3xl border border-white/10 overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.6),inset_0_0_20px_rgba(255,255,255,0.05)] group-hover:border-accent-cyan/40 transition-colors duration-500" 
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        {/* Sweeping Laser Scanline inside the glass */}
+        <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 overflow-hidden">
+            <div className="absolute top-0 -left-full w-[200%] h-full bg-linear-to-r from-transparent via-accent-cyan/10 to-transparent animate-[sweep_2s_ease-in-out_infinite]"></div>
         </div>
+
+        {/* Dynamic Glass Glare (Tracks Cursor) */}
+        <motion.div 
+          className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 mix-blend-overlay pointer-events-none transition-opacity duration-500" 
+          style={{ background: useMotionTemplate`radial-gradient(100px circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.4), transparent 80%)` }} 
+        />
+
+        {/* Top Edge Premium Highlight */}
+        <div className="absolute top-0 left-1/4 right-1/4 h-px bg-linear-to-r from-transparent via-white/40 group-hover:via-accent-cyan to-transparent z-10 transition-colors duration-500"></div>
+
+        {/* 3. 3D Floating Typography (Fixed Alignment) */}
+        <div 
+          className="relative z-20 flex items-center gap-0.75 font-black tracking-tighter" 
+          style={{ transform: "translateZ(50px)" }}
+        >
+          {/* The Letters - Locked dead center */}
+          <div className="flex items-center text-[1.6rem] sm:text-[1.8rem] leading-none uppercase pt-1">
+            <span className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">M</span>
+            <span className="text-transparent bg-clip-text bg-linear-to-b from-white to-white/40 -ml-0.5">A</span>
+          </div>
+          
+          {/* The Next-Level Animated Dot */}
+          <div className="flex flex-col ml- justify-end h-full pt-3">
+            <motion.div 
+              className="w-2 h-2 ml-1 sm:w-2.5 sm:h-2.5 bg-accent-cyan shadow-[0_0_15px_#00f2fe,inset_0_0_8px_#fff]"
+              animate={{ 
+                rotate: [0, 90, 180, 270, 360],
+                scale: [2.5, 1],
+                borderRadius: ["10%", "50%","100%", "20%"]
+              }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            />
+          </div>
+        </div>
+
       </div>
     </motion.a>
   );
