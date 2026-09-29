@@ -37,7 +37,7 @@ export default function About() {
 
 
               <div 
-                className="absolute -bottom-8 -right-4 sm:-right-8 z-40 bg-[#050505]/90 backdrop-blur-xl border border-accent-cyan/20 px-5 py-3 rounded-2xl flex items-center gap-4 shadow-[0_20px_40px_rgba(0,242,254,0.1)] group-hover:-translate-y-2 transition-transform duration-500 transform-gpu"
+                className="absolute -bottom-8 -right-4 sm:-right-8 z-40 bg-bg-base/90 backdrop-blur-xl border border-accent-cyan/20 px-5 py-3 rounded-2xl flex items-center gap-4 shadow-[0_20px_40px_rgba(0,242,254,0.1)] group-hover:-translate-y-2 transition-transform duration-500 transform-gpu"
                 style={{ transform: "translateZ(60px)" }}
               >
                 <div className="w-10 h-10 bg-linear-to-br from-accent-cyan to-accent-blue rounded-xl flex items-center justify-center shadow-[0_0_15px_rgba(0,242,254,0.3)]">
