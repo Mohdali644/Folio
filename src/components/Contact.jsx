@@ -9,7 +9,7 @@ const PremiumInput = ({ label, icon, type = "text", placeholder, value, onChange
     <div className="flex flex-col gap-2.5 group/field relative z-10">
       
       {/* Reactive Label */}
-      <label className="text-[0.65rem] text-white/50 uppercase tracking-[0.25em] font-bold pl-1 group-focus-within/field:text-accent-cyan group-focus-within/field:drop-shadow-[0_0_5px_rgba(0,242,254,0.5)] transition-all duration-300">
+      <label className="text-[0.65rem] text-white/95 uppercase tracking-[0.25em] font-bold pl-1 group-focus-within/field:text-accent-cyan group-focus-within/field:drop-shadow-[0_0_5px_rgba(0,242,254,0.5)] transition-all duration-300">
         {label}
       </label>
       
@@ -18,7 +18,7 @@ const PremiumInput = ({ label, icon, type = "text", placeholder, value, onChange
         <div className="absolute inset-0 bg-linear-to-r from-accent-cyan to-accent-blue rounded-xl blur-lg opacity-0 group-hover/field:opacity-20 group-focus-within/field:opacity-40 transition-opacity duration-500 -z-10"></div>
 
         {/* Integrated SVG Icon */}
-        <div className="absolute left-4 top-[1.1rem] w-5 h-5 text-white/20 group-focus-within/field:text-accent-cyan transition-colors duration-300 z-20 pointer-events-none">
+        <div className="absolute left-4 top-[1.1rem] w-5 h-5 text-white/90 group-focus-within/field:text-accent-cyan transition-colors duration-300 z-20 pointer-events-none">
           {icon}
         </div>
 
@@ -125,11 +125,11 @@ export default function Contact() {
 
               <div className="group relative p-6 rounded-2xl bg-white/2 border border-white/5 backdrop-blur-xl hover:border-white/10 transition-colors duration-500 flex items-center gap-6">
                 <div className="w-12 h-12 rounded-full bg-white/3 border border-white/10 flex items-center justify-center shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] group-hover:bg-white/5 transition-all duration-500">
-                  <span className="text-xl group-hover:scale-110 transition-transform duration-500">📍</span>
+                  <span className="text-xl group-hover:scale-130 transition-transform duration-500">📍</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-white/40 text-[0.65rem] uppercase tracking-[0.2em] font-bold mb-1">Location</span>
-                  <span className="text-white font-medium tracking-wide">Hyderabad, India (Willing to relocate)</span>
+                  <span className="text-white font-medium tracking-wide">Hyderabad, India</span>
                 </div>
               </div>
             </div>
@@ -145,7 +145,7 @@ export default function Contact() {
             className="relative"
           >
             {/* Form Container (Brighter glass to make inputs pop) */}
-            <div className="relative p-8 sm:p-10 rounded-4xl bg-white/2 border border-white/5 backdrop-blur-3xl shadow-[0_30px_60px_rgba(0,0,0,0.6),inset_0_0_30px_rgba(255,255,255,0.02)] overflow-hidden">
+            <div className="relative p-8 sm:p-10 rounded-4xl bg-white/2 border border-white/10 backdrop-blur-3xl shadow-[0_30px_60px_rgba(0,0,0,0.6),inset_0_0_30px_rgba(255,255,255,0.02)] overflow-hidden">
               
               {/* Inner ambient flare */}
               <div className="absolute top-0 right-0 w-75 h-75 bg-accent-cyan/10 rounded-full blur-[80px] pointer-events-none transform-gpu z-0"></div>
@@ -194,7 +194,7 @@ export default function Contact() {
                 <button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="group relative w-full flex items-center justify-center gap-3 mt-4 px-8 py-4 bg-[#0a0a0f] border border-white/10 rounded-xl overflow-hidden cursor-none transition-all duration-300 hover:border-accent-cyan/50 hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none"
+                  className="group relative w-full flex items-center justify-center gap-3 mt-4 px-8 py-4 bg-[#0a0a0f] border border-white/10 rounded-2xl overflow-hidden cursor-none transition-all duration-300 hover:border-accent-cyan/50 hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none"
                 >
                   <div className="absolute inset-0 bg-linear-to-r from-accent-cyan/0 via-accent-cyan/10 to-transparent translate-x-[-150%] group-hover:animate-[sweep_1.5s_ease-in-out_infinite] z-0 skew-x-12"></div>
                   

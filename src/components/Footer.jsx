@@ -36,7 +36,7 @@ export default function Footer() {
                 MA<span className="text-accent-cyan drop-shadow-[0_0_10px_#00f2fe]">.</span>
               </div>
               <p className="text-text-muted leading-relaxed max-w-sm mb-8">Architecting intelligent digital experiences through code and creativity.</p>
-              <div className="inline-flex items-center gap-3 px-4 py-2 bg-[#43e97b]/5 border border-[#43e97b]/20 rounded-md font-mono text-[0.75rem] text-[#43e97b]">
+              <div className="inline-flex items-center gap-3 px-4 py-2 bg-[#43e97b]/5 border border-[#43e97b]/20 rounded-xl mt-5 font-mono text-[0.75rem] text-[#43e97b]">
                 <span className="w-1.5 h-1.5 bg-[#43e97b] rounded-full shadow-[0_0_10px_#43e97b] animate-[rapidBlink_1.5s_infinite]"></span>
                 PORTFOLIO_CORE_V3 // ACTIVE
               </div>

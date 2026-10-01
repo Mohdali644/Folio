@@ -103,9 +103,9 @@ export default function Hero() {
           initial={{ opacity: 0, filter: "blur(5px)" }}
           animate={{ opacity: 1, filter: "blur(0px)" }}
           transition={{ duration: 1, delay: 1.1 }}
-          className="text-text-muted text-lg max-w-2xl mb-12 font-medium px-4 transform-gpu"
+          className="text-text-muted text-lg max-w-5xl mb-20 mt-2 font-medium px-4 transform-gpu"
         >
-          B.E. Information Technology | Engineering scalable architectures and pixel-perfect interfaces.
+          B.E. Information Technology | Engineering scalable architectures and Responive interfaces.
         </motion.p>
 
         {/* Action Buttons */}

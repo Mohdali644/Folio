@@ -110,7 +110,7 @@ function SpatialCard({ category, catIndex }) {
             <h3 className="text-2xl font-medium text-white/90 tracking-wide">{category.title}</h3>
           </div>
           <div className="px-4 py-1.5 rounded-full bg-white/2 border border-white/5 flex items-center gap-2 group-hover:bg-accent-cyan/5 transition-colors">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan/70 group-hover:bg-accent-cyan group-hover:shadow-[0_0_10px_#00f2fe] transition-all"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 group-hover:bg-accent-cyan group-hover:shadow-[0_0_10px_#00f2fe] transition-all"></span>
             <span className="text-xs text-white/50 tracking-widest uppercase">{category.status}</span>
           </div>
         </div>
