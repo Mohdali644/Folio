@@ -63,7 +63,7 @@ export default function Footer() {
             </motion.div>
           </div>
 
-          <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-text-muted text-[0.9rem]">
+          <div className="pt-8 mb-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-text-muted text-[0.9rem]">
             <p>&copy; 2026 Mohd Ali. Engineered with <span className="text-accent-cyan drop-shadow-[0_0_10px_rgba(0,242,254,0.5)] font-bold">React & Tailwind</span>.</p>
             <a href="#home" className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex justify-center items-center text-white hover:bg-accent-cyan hover:text-black hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(0,242,254,0.3)] transition-all cursor-none">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7"></path></svg>

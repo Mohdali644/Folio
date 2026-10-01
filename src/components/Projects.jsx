@@ -9,7 +9,7 @@ const projects = [
     title: "Everbuy",
     category: "E-Commerce Platform",
     description: "A high-performance, modern e-commerce storefront engineered for seamless user experiences, rapid cart interactions, and highly responsive layouts.",
-    tech: ["React.js", "Tailwind CSS", "UI/UX"],
+    tech: ["React.js", "Tailwind CSS","Responisve Design", "UI/UX"],
     link: "https://ever-buy-neon.vercel.app/",
     github: "https://github.com/Mohdali644/EverBuy",
     image: "/everbuy.png", // CHANGE THIS TO YOUR EXACT FILE NAME

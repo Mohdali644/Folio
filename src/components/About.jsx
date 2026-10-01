@@ -21,10 +21,10 @@ export default function About() {
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full aspect-square max-w-[500px] mx-auto lg:mx-0"
+            className="relative w-full aspect-square max-w-500 mx-auto lg:mx-0"
           >
             {/* The Glass Containment Unit */}
-            <div className="absolute inset-0 rounded-[3rem] bg-[#030305]/60 backdrop-blur-3xl border border-white/5 shadow-[0_30px_60px_rgba(0,0,0,0.4),inset_0_0_40px_rgba(255,255,255,0.02)] overflow-hidden flex items-center justify-center transform-gpu">
+            <div className="absolute inset-0 rounded-[3rem] bg-[#030305]/60 backdrop-blur-3xl border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.4),inset_0_0_40px_rgba(255,255,255,0.02)] overflow-hidden flex items-center justify-center transform-gpu">
               
               {/* LIQUID LAYER 1: The Sharp 3D Core */}
               <motion.div
@@ -43,7 +43,7 @@ export default function About() {
                 }}
                 transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
                 // Removed the blur, added a 3D inner shadow, and made the colors solid
-                className="absolute w-[65%] h-[65%] bg-gradient-to-tr from-accent-cyan to-[#0052d4] shadow-[inset_0_0_50px_rgba(255,255,255,0.5),0_15px_40px_rgba(0,242,254,0.4)] opacity-95 transform-gpu"
+                className="absolute w-[65%] h-[65%] bg-linear-to-tr from-accent-cyan to-[#0052d4] shadow-[inset_0_0_50px_rgba(255,255,255,0.5),0_15px_40px_rgba(0,242,254,0.4)] opacity-95 transform-gpu"
               />
 
               {/* LIQUID LAYER 2: The Undercurrent */}
@@ -63,7 +63,7 @@ export default function About() {
                 }}
                 transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
                 // Solid secondary shape that morphs behind the main core
-                className="absolute w-[55%] h-[55%] bg-gradient-to-bl from-accent-blue to-accent-cyan shadow-[inset_0_0_30px_rgba(255,255,255,0.3)] opacity-70 transform-gpu"
+                className="absolute w-[55%] h-[55%] bg-linear-to-bl from-accent-blue to-accent-cyan shadow-[inset_0_0_30px_rgba(255,255,255,0.3)] opacity-70 transform-gpu"
               />
 
               {/* Grid Overlay inside the glass for cyber texture */}
@@ -75,7 +75,7 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-              className="absolute -bottom-6 -right-6 sm:bottom-10 sm:-right-10 px-6 py-3 bg-[#0a0a0f]/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex items-center gap-4 group hover:border-accent-cyan/40 transition-colors duration-500"
+              className="absolute -bottom-6 -right-6 sm:bottom-3 sm:-right-10 px-4 py-3 bg-[#0a0a0f]/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex items-center gap-3 group hover:border-accent-cyan/40 transition-colors duration-500"
             >
               <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-accent-cyan/10 group-hover:scale-110 transition-all duration-300">
                 <span className="text-accent-cyan text-lg">🎓</span>
@@ -115,17 +115,17 @@ export default function About() {
             {/* Stat Cards Matrix */}
             <div className="grid grid-cols-3 gap-3 sm:gap-4">
               
-              <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-accent-cyan/30 hover:bg-white/[0.04] transition-all duration-300 flex flex-col items-center text-center justify-center gap-1 group">
+              <div className="p-4 rounded-2xl bg-white/2 border border-white/5 hover:border-accent-cyan/30 hover:bg-white/4 transition-all duration-300 flex flex-col items-center text-center justify-center gap-1 group">
                 <span className="text-white font-bold text-sm sm:text-base group-hover:text-accent-cyan transition-colors">Full Stack</span>
                 <span className="text-white/30 text-[0.6rem] sm:text-xs uppercase tracking-[0.2em] font-bold">MERN Core</span>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-accent-blue/30 hover:bg-white/[0.04] transition-all duration-300 flex flex-col items-center text-center justify-center gap-1 group">
+              <div className="p-4 rounded-2xl bg-white/2 border border-white/5 hover:border-accent-blue/30 hover:bg-white/4 transition-all duration-300 flex flex-col items-center text-center justify-center gap-1 group">
                 <span className="text-white font-bold text-sm sm:text-base group-hover:text-accent-blue transition-colors">AI / ML</span>
                 <span className="text-white/30 text-[0.6rem] sm:text-xs uppercase tracking-[0.2em] font-bold">Python & NLP</span>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-[#b06ab3]/30 hover:bg-white/[0.04] transition-all duration-300 flex flex-col items-center text-center justify-center gap-1 group">
+              <div className="p-4 rounded-2xl bg-white/2 border border-white/5 hover:border-[#b06ab3]/30 hover:bg-white/4 transition-all duration-300 flex flex-col items-center text-center justify-center gap-1 group">
                 <span className="text-white font-bold text-sm sm:text-base group-hover:text-[#b06ab3] transition-colors">Data</span>
                 <span className="text-white/30 text-[0.6rem] sm:text-xs uppercase tracking-[0.2em] font-bold">Analytics</span>
               </div>
