@@ -77,7 +77,7 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
               className="absolute -bottom-6 -right-6 sm:bottom-3 sm:-right-10 px-4 py-3 bg-[#0a0a0f]/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex items-center gap-3 group hover:border-accent-cyan/40 transition-colors duration-500"
             >
-              <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-accent-cyan/10 group-hover:scale-110 transition-all duration-300">
+              <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-accent-cyan/95 group-hover:scale-120 transition-all duration-300">
                 <span className="text-accent-cyan text-lg">🎓</span>
               </div>
               <div className="flex flex-col">
@@ -116,17 +116,17 @@ export default function About() {
             <div className="grid grid-cols-3 gap-3 sm:gap-4">
               
               <div className="p-4 rounded-2xl bg-white/2 border border-white/5 hover:border-accent-cyan/30 hover:bg-white/4 transition-all duration-300 flex flex-col items-center text-center justify-center gap-1 group">
-                <span className="text-white font-bold text-sm sm:text-base group-hover:text-accent-cyan transition-colors">Full Stack</span>
+                <span className="text-white font-bold tracking-wider text-sm sm:text-base group-hover:text-accent-cyan transition-colors">Full Stack</span>
                 <span className="text-white/30 text-[0.6rem] sm:text-xs uppercase tracking-[0.2em] font-bold">MERN Core</span>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white/2 border border-white/5 hover:border-accent-blue/30 hover:bg-white/4 transition-all duration-300 flex flex-col items-center text-center justify-center gap-1 group">
-                <span className="text-white font-bold text-sm sm:text-base group-hover:text-accent-blue transition-colors">AI / ML</span>
+              <div className="p-4 rounded-2xl bg-white/2 border border-white/5 hover:border-accent-blue/70 hover:bg-white/4 transition-all duration-300 flex flex-col items-center text-center justify-center gap-1 group">
+                <span className="text-white font-bold text-sm sm:text-base group-hover:text-blue-400 transition-colors">AI / ML</span>
                 <span className="text-white/30 text-[0.6rem] sm:text-xs uppercase tracking-[0.2em] font-bold">Python & NLP</span>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white/2 border border-white/5 hover:border-[#b06ab3]/30 hover:bg-white/4 transition-all duration-300 flex flex-col items-center text-center justify-center gap-1 group">
-                <span className="text-white font-bold text-sm sm:text-base group-hover:text-[#b06ab3] transition-colors">Data</span>
+              <div className="p-4 rounded-2xl bg-white/2 border border-white/5 hover:border-[#b06ab3]/70 hover:bg-white/4 transition-all duration-300 flex flex-col items-center text-center justify-center gap-1 group">
+                <span className="text-white font-bold text-sm sm:text-base group-hover:text-pink-400 transition-colors">Data</span>
                 <span className="text-white/30 text-[0.6rem] sm:text-xs uppercase tracking-[0.2em] font-bold">Analytics</span>
               </div>
 

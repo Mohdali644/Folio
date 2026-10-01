@@ -43,7 +43,7 @@ export default function Footer() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
-              <h4 className="text-[1.1rem] font-black uppercase tracking-widest mb-8 text-white">Navigation</h4>
+              <h4 className="text-[1.2rem] font-black uppercase tracking-widest mb-8 text-white">Navigation</h4>
               <ul className="flex flex-col gap-4">
                 {['Home', 'About', 'Work', 'Connect'].map(link => (
                   <li key={link}>
@@ -54,7 +54,7 @@ export default function Footer() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-              <h4 className="text-[1.1rem] font-black uppercase tracking-widest mb-8 text-white">Digital Presence</h4>
+              <h4 className="text-[1.2rem] font-black uppercase tracking-widest mb-8 text-white">Digital Presence</h4>
               <ul className="flex flex-col gap-4">
                 <li><a href="https://github.com/Mohdali644" target="_blank" rel="noreferrer" className="text-text-muted font-medium hover:text-accent-cyan hover:pl-2 hover:drop-shadow-[0_0_10px_#00f2fe] transition-all cursor-none">GitHub</a></li>
                 <li><a href="https://www.linkedin.com/in/mohd-ali-dev/" target="_blank" rel="noreferrer" className="text-text-muted font-medium hover:text-accent-cyan hover:pl-2 hover:drop-shadow-[0_0_10px_#00f2fe] transition-all cursor-none">LinkedIn</a></li>

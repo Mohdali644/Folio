@@ -52,7 +52,7 @@ export default function Hero() {
       <div className="relative z-10 flex flex-col items-center pointer-events-none mt-10 w-full px-6">
         
         {/* Typography */}
-        <div className="relative mt-24 mb-2 sm:mb-4 w-full overflow-hidden flex justify-center py-2">
+        <div className="relative mt-24 mb-2 sm:mb-4 w-full flex justify-center py-2">
           <h1 className="text-[clamp(4.5rem,15vw,12rem)] font-black leading-[0.85] tracking-tighter text-white drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex gap-4 sm:gap-6">
             <motion.span
               initial={{ opacity: 0, x: -150, filter: "blur(20px)" }}
