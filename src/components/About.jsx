@@ -97,7 +97,8 @@ export default function About() {
             className="flex flex-col"
           >
             <h2 className="text-[clamp(3.5rem,7vw,5rem)] font-light text-white leading-none tracking-tight mb-4">
-              About <span className="font-bold">Me.</span>
+              About <span className="font-bold">Me</span>
+              <span className="text-accent-cyan font-extrabold animate-pulse">.</span>
             </h2>
             <h3 className="text-xl sm:text-2xl text-accent-cyan font-medium mb-8 leading-relaxed">
               Architecting Intelligent Systems <br className="hidden sm:block"/> & Seamless Experiences.

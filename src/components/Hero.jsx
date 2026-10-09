@@ -15,14 +15,7 @@ export default function Hero() {
       events: { onHover: { enable: true, mode: "repulse" } },
       modes: { repulse: { distance: 150, duration: 0.4 } },
     },
-    particles: {
-      color: { value: "#ffffff" },
-      links: { color: "#ffffff", distance: 150, enable: true, opacity: 0.1, width: 1 },
-      move: { enable: true, speed: 0.8, outModes: { default: "bounce" } },
-      number: { density: { enable: true, area: 40 }, value: 40 },
-      opacity: { value: 0.2 },
-      size: { value: { min: 1, max: 2 } },
-    },
+    
     detectRetina: true,
   }), []);
 
@@ -42,13 +35,43 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen w-full flex items-center justify-center text-center overflow-x-clip overflow-y-visible">
       
-      {/* GPU Optimized Ambient Orbs */}
-      <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-accent-cyan rounded-full blur-[100px] opacity-30 mix-blend-screen animate-[pulseOrb_8s_ease-in-out_infinite_alternate] transform-gpu will-change-transform z-0"></div>
-      <div className="absolute bottom-[-20%] right-[-10%] w-[40vw] h-[40vw] bg-accent-blue rounded-full blur-[100px] opacity-30 mix-blend-screen animate-[pulseOrb_10s_ease-in-out_infinite_alternate-reverse] transform-gpu will-change-transform z-0"></div>
-      <div className="absolute top-[40%] left-[40%] w-[30vw] h-[30vw] bg-[#b06ab3] rounded-full blur-[90px] opacity-20 mix-blend-screen animate-[spin_15s_linear_infinite] transform-gpu will-change-transform z-0"></div>
+      {/* GPU Optimized, Decoupled Color-Shifting Orbs */}
+      <motion.div 
+        animate={{
+          backgroundColor: ["#00f2fe", "#4facfe", "#b06ab3", "#00f2fe"],
+          scale: [1, 1.1, 1]
+        }}
+        transition={{ 
+          backgroundColor: { duration: 15, repeat: Infinity, ease: "linear" },
+          scale: { duration: 10, repeat: Infinity, ease: "easeInOut" }
+        }}
+        className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full blur-[100px] opacity-30 mix-blend-screen transform-gpu will-change-transform z-0"
+      />
 
-      <div id="hero-particles" className="absolute inset-0 z-0 mix-blend-screen mask-[radial-gradient(ellipse_at_center,black,transparent)] pointer-events-none"></div>
+      <motion.div 
+        animate={{
+          backgroundColor: ["#4facfe", "#b06ab3", "#00f2fe", "#4facfe"],
+          scale: [1, 1.2, 1]
+        }}
+        transition={{ 
+          backgroundColor: { duration: 18, repeat: Infinity, ease: "linear" },
+          scale: { duration: 12, repeat: Infinity, ease: "easeInOut" }
+        }}
+        className="absolute bottom-[-20%] right-[-10%] w-[40vw] h-[40vw] rounded-full blur-[100px] opacity-30 mix-blend-screen transform-gpu will-change-transform z-0"
+      />
 
+      <motion.div 
+        animate={{
+          backgroundColor: ["#b06ab3", "#00f2fe", "#4facfe", "#b06ab3"],
+          scale: [1, 0.9, 1]
+        }}
+        transition={{ 
+          backgroundColor: { duration: 12, repeat: Infinity, ease: "linear" },
+          scale: { duration: 14, repeat: Infinity, ease: "easeInOut" }
+        }}
+        className="absolute top-[40%] left-[40%] w-[30vw] h-[30vw] rounded-full blur-[90px] opacity-20 mix-blend-screen transform-gpu will-change-transform z-0"
+      />
+      
       <div className="relative z-10 flex flex-col items-center pointer-events-none mt-10 w-full px-6">
         
         {/* Typography */}
