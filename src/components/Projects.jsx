@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useInView, useMotionValue, useSpring, useTransform, useMotionTemplate } from "framer-motion";
+import { motion, useInView, useMotionValue, useMotionTemplate } from "framer-motion";
 
 // ==========================================
 // YOUR PROJECTS DATA
@@ -9,11 +9,11 @@ const projects = [
     title: "Everbuy",
     category: "E-Commerce Platform",
     description: "A high-performance, modern e-commerce storefront engineered for seamless user experiences, rapid cart interactions, and highly responsive layouts.",
-    tech: ["React.js", "Tailwind CSS","Responisve Design", "UI/UX"],
+    tech: ["React.js", "Tailwind CSS", "Responisve Design", "UI/UX"],
     link: "https://ever-buy-neon.vercel.app/",
     github: "https://github.com/Mohdali644/EverBuy",
-    image: "/everbuy.png", // CHANGE THIS TO YOUR EXACT FILE NAME
-    imageGradient: "from-[#00f2fe] to-[#4facfe]" // Cyan glow overlay
+    image: "/everbuy.png", 
+    imageGradient: "from-[#00f2fe] to-[#4facfe]" 
   },
   {
     title: "Whiskerverse",
@@ -22,8 +22,8 @@ const projects = [
     tech: ["TypeScript", "Tailwind CSS", "ES6+ JavaScript", "UI/UX"],
     link: "https://mohdali644.github.io/Whisker-verse/",
     github: "https://github.com/Mohdali644/Whisker-verse",
-    image: "/whiskerverse.png", // CHANGE THIS TO YOUR EXACT FILE NAME
-    imageGradient: "from-[#ff9a9e] to-[#fecfef]" // Soft pink glow overlay
+    image: "/whiskerverse.png", 
+    imageGradient: "from-[#ff9a9e] to-[#fecfef]" 
   },
   {
     title: "HackPrix Analytics",
@@ -32,46 +32,26 @@ const projects = [
     tech: ["Python", "Machine Learning", "React.js", "Data Analytics"],
     link: "#",
     github: "#",
-    image: "/hackprix.jpg", // CHANGE THIS TO YOUR EXACT FILE NAME
-    imageGradient: "from-[#b06ab3] to-[#4568dc]" // Purple/Blue glow overlay
+    image: "/hackprix.jpg", 
+    imageGradient: "from-[#b06ab3] to-[#4568dc]" 
   }
 ];
 
 // ==========================================
-// 3D HOLOGRAPHIC PROJECT CARD
+// PREMIUM GLASS PROJECT CARD (No Cheap Tilt)
 // ==========================================
 function ProjectCard({ project, index }) {
   const cardRef = useRef(null);
   const isInView = useInView(cardRef, { once: true, amount: 0.2 });
 
-  // 3D Tilt Physics
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 25 });
-  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 25 });
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["8deg", "-8deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-8deg", "8deg"]);
-
-  // Dynamic Glare Physics
+  // Dynamic Glare Physics (Keeps the premium lighting, removes the wobble)
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
   function handleMouseMove(e) {
     const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseXPos = e.clientX - rect.left;
-    const mouseYPos = e.clientY - rect.top;
-    
-    x.set(mouseXPos / width - 0.5);
-    y.set(mouseYPos / height - 0.5);
-    mouseX.set(mouseXPos);
-    mouseY.set(mouseYPos);
-  }
-
-  function handleMouseLeave() {
-    x.set(0);
-    y.set(0);
+    mouseX.set(e.clientX - rect.left);
+    mouseY.set(e.clientY - rect.top);
   }
 
   return (
@@ -80,16 +60,13 @@ function ProjectCard({ project, index }) {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.8, delay: index * 0.2, ease: [0.16, 1, 0.3, 1] }}
-      style={{ perspective: 2000 }}
       className="w-full relative z-10"
     >
       <motion.div
         onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
         className="relative w-full rounded-4xl sm:rounded-[3rem] bg-white/2 border border-white/5 backdrop-blur-3xl overflow-visible group cursor-none shadow-[0_30px_60px_rgba(0,0,0,0.4)] hover:border-white/20 transition-colors duration-700 transform-gpu"
       >
-        {/* Holographic Glare */}
+        {/* Holographic Glare - Tracks your mouse without tilting the card */}
         <motion.div
           className="absolute inset-0 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-4xl sm:rounded-[3rem] mix-blend-overlay"
           style={{
@@ -105,16 +82,13 @@ function ProjectCard({ project, index }) {
           ========================================== */}
           <div className="relative p-4 sm:p-6 overflow-hidden rounded-t-4xl lg:rounded-l-[3rem] lg:rounded-tr-none h-64 lg:h-full lg:min-h-100">
             
-            {/* Visual Container (Pushed back slightly in 3D) */}
-            <div 
-              className="absolute inset-4 sm:inset-6 rounded-2xl sm:rounded-3xl overflow-hidden bg-bg-base border border-white/10 shadow-[inset_0_0_20px_rgba(0,0,0,0.8)] transform-gpu"
-              style={{ transform: "translateZ(-20px)" }}
-            >
+            {/* Visual Container */}
+            <div className="absolute inset-4 sm:inset-6 rounded-2xl sm:rounded-3xl overflow-hidden bg-bg-base border border-white/10 shadow-[inset_0_0_20px_rgba(0,0,0,0.8)] transform-gpu">
+              
               {/* THE ACTUAL PROJECT SCREENSHOT */}
               <img 
                 src={project.image} 
                 alt={project.title}
-                // CHANGED: object-contain prevents cropping, and p-6 creates an elegant floating border
                 className="w-full h-full object-contain object-center p-6 sm:p-8 opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 ease-out"
               />
 
@@ -123,16 +97,14 @@ function ProjectCard({ project, index }) {
               
               {/* Edge Vignette */}
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#050505_100%)] pointer-events-none"></div>
-              </div>
+            </div>
           </div>
 
           {/* ==========================================
               RIGHT SIDE: THE CONTENT
           ========================================== */}
-          <div 
-            className="relative p-8 sm:p-12 lg:p-16 flex flex-col justify-center"
-            style={{ transform: "translateZ(60px)", transformStyle: "preserve-3d" }}
-          >
+          <div className="relative p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
+            
             <div className="flex items-center gap-4 mb-6">
               <span className="h-px w-8 bg-accent-cyan shadow-[0_0_10px_#00f2fe]"></span>
               <span className="text-accent-cyan text-[0.65rem] sm:text-xs font-bold tracking-[0.25em] uppercase drop-shadow-[0_0_8px_rgba(0,242,254,0.5)]">
@@ -149,7 +121,7 @@ function ProjectCard({ project, index }) {
             </p>
 
             {/* Tech Stack Pills */}
-            <div className="flex flex-wrap gap-2 sm:gap-3 mb-10" style={{ transform: "translateZ(30px)" }}>
+            <div className="flex flex-wrap gap-2 sm:gap-3 mb-10">
               {project.tech.map((tech, i) => (
                 <span 
                   key={i} 
@@ -161,7 +133,7 @@ function ProjectCard({ project, index }) {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex items-center gap-6 mt-auto" style={{ transform: "translateZ(40px)" }}>
+            <div className="flex items-center gap-6 mt-auto">
               <a href={project.link} className="relative group/btn flex items-center gap-3 overflow-hidden">
                 <span className="text-white font-bold text-sm tracking-[0.15em] uppercase z-10 group-hover/btn:text-accent-cyan transition-colors duration-300">
                   View Live
