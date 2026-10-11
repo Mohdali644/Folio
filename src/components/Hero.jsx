@@ -1,29 +1,9 @@
-import { useState, useEffect, useMemo } from "react";
-import { tsParticles } from "@tsparticles/engine";
-import { loadSlim } from "@tsparticles/slim";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const roles = ["Front-End Developer", "Full-Stack Developer", "Creative Engineer"];
-
-  const options = useMemo(() => ({
-    fullScreen: { enable: false, zIndex: 0 },
-    background: { color: { value: "transparent" } },
-    fpsLimit: 120,
-    interactivity: {
-      events: { onHover: { enable: true, mode: "repulse" } },
-      modes: { repulse: { distance: 150, duration: 0.4 } },
-    },
-    
-    detectRetina: true,
-  }), []);
-
-  useEffect(() => {
-    loadSlim(tsParticles).then(() => {
-      tsParticles.load({ id: "hero-particles", options });
-    });
-  }, [options]);
 
   useEffect(() => {
     const interval = setInterval(() => {
