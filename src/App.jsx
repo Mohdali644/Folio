@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import SignatureBadge from "./components/SignatureBadge";
 import CustomCursor from './components/CustomCursor';
 import BootSequence from './components/BootSequence';
 import Header from './components/Header';
@@ -34,6 +35,7 @@ function App() {
               <Projects />
               <Contact />
             </main>
+            <SignatureBadge />
             <Footer />
           </>
         )}
