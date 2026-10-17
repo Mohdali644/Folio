@@ -21,10 +21,10 @@ export default function About() {
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full aspect-square max-w-[500px] mx-auto lg:mx-0 group/card"
+            className="relative w-full aspect-square max-w-125 mx-auto lg:mx-0 group/card"
           >
             {/* Outer Magnetic Hover Glow */}
-            <div className="absolute -inset-2 bg-gradient-to-r from-accent-cyan via-accent-blue to-[#b06ab3] rounded-[3.5rem] opacity-0 group-hover/card:opacity-30 blur-2xl transition-opacity duration-700 pointer-events-none transform-gpu"></div>
+            <div className="absolute -inset-2 bg-linear-to-r from-accent-cyan via-accent-blue to-[#b06ab3] rounded-[3.5rem] opacity-0 group-hover/card:opacity-30 blur-2xl transition-opacity duration-700 pointer-events-none transform-gpu"></div>
 
             {/* The Glass Containment Unit - Blur is safely kept here since this box doesn't move */}
             <div 
@@ -55,7 +55,7 @@ export default function About() {
                   borderRadius: { duration: 15, repeat: Infinity, ease: "easeInOut" }
                 }}
                 style={{ willChange: "transform, border-radius", transform: "translateZ(0)" }}
-                className="absolute w-[60%] h-[60%] bg-gradient-to-tr from-[#0052d4] to-[#4364f7] shadow-[inset_0_0_30px_rgba(255,255,255,0.2)] opacity-90 pointer-events-none"
+                className="absolute w-[60%] h-[60%] bg-linear-to-tr from-[#0052d4] to-[#4364f7] shadow-[inset_0_0_30px_rgba(255,255,255,0.2)] opacity-90 pointer-events-none"
               />
 
               {/* LIQUID LAYER 2: The Neon Energy Web (Used pure opacity instead of color-dodge) */}
@@ -81,7 +81,7 @@ export default function About() {
                   borderRadius: { duration: 17, repeat: Infinity, ease: "easeInOut" }
                 }}
                 style={{ willChange: "transform, border-radius", transform: "translateZ(0)" }}
-                className="absolute w-[55%] h-[55%] bg-gradient-to-bl from-accent-cyan to-transparent shadow-[0_0_30px_rgba(0,242,254,0.3)] opacity-80 pointer-events-none"
+                className="absolute w-[55%] h-[55%] bg-linear-to-bl from-accent-cyan to-transparent shadow-[0_0_30px_rgba(0,242,254,0.3)] opacity-80 pointer-events-none"
               />
 
               {/* LIQUID LAYER 3: The Titanium Lens (Removed backdrop-blur on the moving element) */}

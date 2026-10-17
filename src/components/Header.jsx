@@ -85,14 +85,14 @@ function MagneticLogo() {
       {/* 1. Ambient Holographic Aura */}
       <div className="absolute inset-0 bg-linear-to-r from-accent-cyan via-accent-blue to-[#b06ab3] blur-[20px] opacity-0 group-hover:opacity-40 transition-opacity duration-700 rounded-2xl"></div>
 
-      {/* 2. Physical Glass Chassis (Upgraded to a high-tech square-ish box) */}
+      {/* 2. Physical Glass Chassis */}
       <div 
         className="relative flex items-center justify-center px-6 py-3.5 rounded-3xl bg-[#030305]/80 backdrop-blur-3xl border border-white/10 overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.6),inset_0_0_20px_rgba(255,255,255,0.05)] group-hover:border-accent-cyan/40 transition-colors duration-500" 
         style={{ transformStyle: "preserve-3d" }}
       >
         {/* Sweeping Laser Scanline inside the glass */}
         <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 overflow-hidden">
-            <div className="absolute top-0 -left-full w-[200%] h-full bg-linear-to-r from-transparent via-accent-cyan/10 to-transparent animate-[sweep_2s_ease-in-out_infinite]"></div>
+          <div className="absolute top-0 -left-full w-[200%] h-full bg-linear-to-r from-transparent via-accent-cyan/10 to-transparent animate-[sweep_2s_ease-in-out_infinite]"></div>
         </div>
 
         {/* Dynamic Glass Glare (Tracks Cursor) */}
@@ -104,7 +104,7 @@ function MagneticLogo() {
         {/* Top Edge Premium Highlight */}
         <div className="absolute top-0 left-1/4 right-1/4 h-px bg-linear-to-r from-transparent via-white/40 group-hover:via-accent-cyan to-transparent z-10 transition-colors duration-500"></div>
 
-        {/* 3. 3D Floating Typography (Fixed Alignment) */}
+        {/* 3. 3D Floating Typography */}
         <div 
           className="relative z-20 flex items-center gap-0.75 font-black tracking-tighter" 
           style={{ transform: "translateZ(50px)" }}
@@ -115,16 +115,29 @@ function MagneticLogo() {
             <span className="text-transparent bg-clip-text bg-linear-to-b from-white to-white/40 -ml-0.5">A</span>
           </div>
           
-          {/* The Next-Level Animated Dot */}
-          <div className="flex flex-col ml- justify-end h-full pt-3">
+          {/* Continuous Non-Stop Singularity Dot */}
+          <div className="flex flex-col justify-end h-full pt-3">
             <motion.div 
-              className="w-2 h-2 ml-1 sm:w-2.5 sm:h-2.5 bg-accent-cyan shadow-[0_0_15px_#00f2fe,inset_0_0_8px_#fff]"
+              className="w-2 h-2 ml-2 sm:w-2.5 sm:h-2.5 transform-gpu will-change-transform"
               animate={{ 
-                rotate: [0, 90, 180, 270, 360],
-                scale: [2,1, 2],
-                borderRadius: ["10%", "30%","100%", "20%"]
+                rotate: [0, 360],
+                scale: [2, 0.85],
+                x: [3, -6],
+                y: [0, 1.5],
+                borderRadius: ["18%", "50%"],
+                backgroundColor: [
+                  "#007c85", // Big: Deep Dimmed Accent-Cyan
+                  "#00f2fe"  // Small & Pulled Left: Full Bright Accent-Cyan
+                ],
+                boxShadow: [
+                  "0 0 8px rgba(0, 242, 254, 0.25), inset 0 0 2px rgba(0, 242, 254, 0.4)",
+                  "0 0 20px #00f2fe, 0 0 35px #00f2fe, inset 0 0 8px #ffffff"
+                ]
               }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              transition={{ 
+                rotate: { duration: 1.4, repeat: Infinity, ease: "linear" },
+                default: { duration: 2.2, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }
+              }}
             />
           </div>
         </div>
