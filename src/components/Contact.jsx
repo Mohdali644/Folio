@@ -47,7 +47,6 @@ const PremiumInput = ({ label, icon, type = "text", placeholder, value, onChange
   );
 };
 
-
 /* ==========================================
    MAIN CONTACT SECTION
 ========================================== */
@@ -194,7 +193,7 @@ export default function Contact() {
                 <button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="group relative w-full flex items-center justify-center gap-3 mt-4 px-8 py-4 bg-[#0a0a0f] border border-white/10 rounded-2xl overflow-hidden cursor-none transition-all duration-300 hover:border-accent-cyan/50 hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none"
+                  className="group relative w-full flex items-center justify-center gap-3 mt-4 px-8 py-4 bg-[#0a0a0f] border border-white/10 rounded-full overflow-hidden cursor-none transition-all duration-300 hover:border-accent-cyan/50 hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none"
                 >
                   <div className="absolute inset-0 bg-linear-to-r from-accent-cyan/0 via-accent-cyan/10 to-transparent translate-x-[-150%] group-hover:animate-[sweep_1.5s_ease-in-out_infinite] z-0 skew-x-12"></div>
                   

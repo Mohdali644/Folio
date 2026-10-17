@@ -11,12 +11,19 @@ export default function Footer() {
           
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <div className="text-3xl font-black mb-6 text-white flex items-baseline">
-              MA<span className="text-accent-cyan drop-shadow-[0_0_10px_#00f2fe]">.</span>
+              MA<span className="text-accent-cyan animate-pulse drop-shadow-[0_0_10px_#00f2fe]">.</span>
             </div>
-            <p className="text-text-muted leading-relaxed max-w-sm mb-8">Architecting intelligent digital experiences through code and creativity.</p>
-            <div className="inline-flex items-center gap-3 px-4 py-2 bg-[#43e97b]/5 border border-[#43e97b]/20 rounded-xl mt-5 font-mono text-[0.75rem] text-[#43e97b]">
-              <span className="w-1.5 h-1.5 bg-[#43e97b] rounded-full shadow-[0_0_10px_#43e97b] animate-[rapidBlink_1.5s_infinite]"></span>
-              PORTFOLIO_CORE_V3 // ACTIVE
+            <p className="text-text-muted leading-relaxed max-w-sm mb-8">
+              Architecting intelligent digital experiences through code and creativity.
+            </p>
+            
+            {/* Cyan Telemetry HUD */}
+            <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/2 border border-white/10 rounded-full mt-5 font-mono text-[0.7rem] tracking-widest uppercase text-white/60 backdrop-blur-md">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              <span>HYDERABAD, IN <span className="text-accent-cyan font-bold">//</span> FULL-STACK & AI</span>
             </div>
           </motion.div>
 
@@ -41,8 +48,8 @@ export default function Footer() {
           </motion.div>
         </div>
 
-        <div className="pt-8 mb-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-text-muted text-[0.9rem]">
-          <p>&copy; 2026 Mohd Ali. Engineered with <span className="text-accent-cyan drop-shadow-[0_0_10px_rgba(0,242,254,0.5)] font-bold">React & Tailwind</span>.</p>
+        <div className="pt-8 mb-6 border-t tracking-wide border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-text-muted text-[1rem]">
+          <p>&copy; 2026 Mohd Ali. Engineered with <span className="text-accent-cyan drop-shadow-[0_0_10px_rgba(0,242,254,0.5)] animate-pulse font-bold">React & Tailwind</span>.</p>
           <a href="#home" className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex justify-center items-center text-white hover:bg-accent-cyan hover:text-black hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(0,242,254,0.3)] transition-all cursor-none">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7"></path></svg>
           </a>
